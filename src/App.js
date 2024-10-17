@@ -1,7 +1,13 @@
-import "./App.css";
+import React from "react";
+import MainLayout from "./layouts/MainLayout";
+import HomeScreen from "./screens/Login/HomeScreen";
 
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <MainLayout>
+      <HomeScreen />
+    </MainLayout>
+  );
 }
 
 export default App;
