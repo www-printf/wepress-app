@@ -1,11 +1,13 @@
 import React from "react";
-import LoginPage from "./screens/Login/LoginPage";
-const App = () => {
+import MainLayout from "./layouts/MainLayout";
+import HomeScreen from "./screens/Login/HomeScreen";
+
+function App() {
   return (
-    <div>
-      <LoginPage />
-    </div>
+    <MainLayout>
+      <HomeScreen />
+    </MainLayout>
   );
-};
+}
 
 export default App;
