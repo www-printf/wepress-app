@@ -1,70 +1,180 @@
-# Getting Started with Create React App
+# WePress App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React-based web application with Redux integration and role-based authentication.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- React 18+ with Vite
+- Redux Toolkit for state management
+- Role-based authentication
+- Public and private routing
+- Lazy loading components
+- Docker support
+- Comprehensive testing setup
 
-### `npm start`
+## 📋 Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js (v18 or higher)
+- Yarn (v1.22 or higher)
+- Docker (optional)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Installation
 
-### `npm test`
+1. Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/www-printf/wepress-app.git
+   cd wepress-app
+   ```
 
-### `npm run build`
+2. Install dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   make install
+   # or manually: yarn install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start the development server:
 
-### `npm run eject`
+```bash
+make dev
+# or manually: yarn dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application will be available at `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📦 Build
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Build for production:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+make build
+# or manually: yarn build
+```
 
-## Learn More
+## 🧪 Testing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Run tests:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+make test
+# or manually: yarn test
+```
 
-### Code Splitting
+## 📝 Code Quality
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Run linting:
 
-### Analyzing the Bundle Size
+```bash
+make lint
+# or manually: yarn lint
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Format code:
 
-### Making a Progressive Web App
+```bash
+make format
+# or manually: yarn format
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🐳 Docker
 
-### Advanced Configuration
+Build Docker image:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+make docker-build
+```
 
-### Deployment
+Run Docker container:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+make docker-run
+```
 
-### `npm run build` fails to minify
+Stop Docker container:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+make docker-stop
+```
+
+## 📁 Project Structure
+
+```
+wepress-app/
+├── src/
+│   ├── components/     # Reusable components
+│   ├── layouts/        # Layout components
+│   ├── modules/        # Feature modules
+│   ├── routes/         # Routing configuration
+│   ├── store/          # Redux store setup
+│   └── App.jsx         # Root component
+├── public/             # Static assets
+├── .eslintrc.js       # ESLint configuration
+├── .prettierrc        # Prettier configuration
+├── vite.config.js     # Vite configuration
+├── Dockerfile         # Docker configuration
+├── Makefile          # Make commands
+└── package.json      # Project dependencies
+```
+
+## 📄 Available Scripts
+
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn preview` - Preview production build
+- `yarn test` - Run tests
+- `yarn lint` - Run ESLint
+- `yarn format` - Format code with Prettier
+
+## 🔧 Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_URL=your_api_url
+```
+
+## 📦 Dependencies
+
+Main dependencies:
+
+- React
+- React Router DOM
+- Redux Toolkit
+- PropTypes
+- Vite
+
+Dev dependencies:
+
+- ESLint
+- Prettier
+- Jest
+- React Testing Library
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+`````
+
+The key changes made:
+1. Fixed code block syntax by using four backticks (````) for proper nesting
+2. Added proper spacing between sections
+3. Ensured consistent indentation for nested code blocks
+4. Fixed the project structure tree formatting
+5. Made sure all command blocks are properly formatted
+6. Added proper spacing after headings
+7. Ensured consistent emoji usage for section headers
+
+This format should now render correctly on GitHub and other markdown viewers.
+`````
