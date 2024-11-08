@@ -59,7 +59,10 @@ const loginPage = {
 };
 
 export const privateRouteData = [];
-export const publicRoutesData = [landingPage, loginPage];
+export const publicRoutesData = [
+  landingPage, 
+  loginPage
+];
 
 // Improved route rendering function
 const renderRoutes = (routes, isPrivate = false) => {
