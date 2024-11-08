@@ -3,7 +3,7 @@ import "./index.css";
 export default function DemoSection() {
   return (
     <div className="demo-section">
-      <p>Hello World</p>
+      <h2 className="demo-section__title">Demo Section</h2>
     </div>
   );
 }
