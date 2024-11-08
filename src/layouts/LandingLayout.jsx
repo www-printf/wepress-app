@@ -5,9 +5,9 @@ import { useState, useEffect, useRef } from "react";
 const LandingLayout = ({ children }) => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
