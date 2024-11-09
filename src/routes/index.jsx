@@ -13,6 +13,7 @@ import Loading from "../components/Loading";
 // import LandingLayout from "../layouts/LandingLayout";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { ENDPOINTS } from "./endPoints";
+import LandingLayout from "../layouts/LandingLayout";
 
 const WEB_NAME = "WePress App";
 
@@ -46,7 +47,7 @@ const delayRoute = (ms = 500) => {
 // Routes configuration
 const landingPage = {
   path: ENDPOINTS.INDEX,
-  Layout: DefaultLayout,
+  Layout: LandingLayout,
   component: lazy(() => delayRoute()(import("../modules/landing/features"))),
   title: WEB_NAME,
 };
@@ -57,11 +58,18 @@ const loginPage = {
   title: `Login | ${WEB_NAME}`,
   Layout: DefaultLayout,
 };
+const forgotPasswordPage = {
+  path: ENDPOINTS.AUTH.FORGOT_PASSWORD,
+  component: lazy(() => delayRoute()(import("../modules/auth/features/forgotPassword"))),
+  title: `Forgot Password | ${WEB_NAME}`,
+  Layout: DefaultLayout,
+};
 
 export const privateRouteData = [];
 export const publicRoutesData = [
   landingPage, 
-  loginPage
+  loginPage,
+  forgotPasswordPage
 ];
 
 // Improved route rendering function
