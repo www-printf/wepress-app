@@ -10,8 +10,10 @@ import {
   useLocation,
 } from "react-router-dom";
 import Loading from "../components/Loading";
-import LandingLayout from "../layouts/LandingLayout";
+// import LandingLayout from "../layouts/LandingLayout";
+import DefaultLayout from "../layouts/DefaultLayout";
 import { ENDPOINTS } from "./endPoints";
+import LandingLayout from "../layouts/LandingLayout";
 
 const WEB_NAME = "WePress App";
 
@@ -50,8 +52,25 @@ const landingPage = {
   title: WEB_NAME,
 };
 
+const loginPage = {
+  path: ENDPOINTS.AUTH.LOGIN,
+  component: lazy(() => delayRoute()(import("../modules/auth/features/login"))),
+  title: `Login | ${WEB_NAME}`,
+  Layout: DefaultLayout,
+};
+const forgotPasswordPage = {
+  path: ENDPOINTS.AUTH.FORGOT_PASSWORD,
+  component: lazy(() => delayRoute()(import("../modules/auth/features/forgotPassword"))),
+  title: `Forgot Password | ${WEB_NAME}`,
+  Layout: DefaultLayout,
+};
+
 export const privateRouteData = [];
-export const publicRoutesData = [landingPage];
+export const publicRoutesData = [
+  landingPage, 
+  loginPage,
+  forgotPasswordPage
+];
 
 // Improved route rendering function
 const renderRoutes = (routes, isPrivate = false) => {
@@ -77,7 +96,7 @@ const renderRoutes = (routes, isPrivate = false) => {
         path={path}
         element={
           isPrivate ? (
-            <RequiredAuth path="/auth/login">{content}</RequiredAuth>
+            <RequiredAuth path={ENDPOINTS.AUTH.LOGIN}>{content}</RequiredAuth>
           ) : (
             content
           )

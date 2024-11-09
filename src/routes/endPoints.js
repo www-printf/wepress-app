@@ -1,7 +1,7 @@
 export const ENDPOINTS = Object.freeze({
     AUTH: {
         LOGIN: '/user/login',
-        REGISTER: '/user/register',
+        FORGOT_PASSWORD: '/user/forgot-password',
     },
     INDEX: "/"
 });
