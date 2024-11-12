@@ -118,16 +118,16 @@ const myDocumentsPage = {
   title: `My Documents | ${WEB_NAME}`,
 };
 
-export const privateRouteData = [homePage, printDocumentPage, editDocumentPage];
-
-export const publicRoutesData = [
-  landingPage,
-  loginPage,
-  forgotPasswordPage,
+export const privateRouteData = [
+  homePage,
+  printDocumentPage,
+  editDocumentPage,
   wepressLibraryPage, // Cần sửa
   sharedWithMePage, // Cần sửa
   myDocumentsPage, // Cần sửa
 ];
+
+export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage];
 
 // Improved route rendering function
 const renderRoutes = (routes, isPrivate = false) => {
