@@ -63,7 +63,9 @@ const loginPage = {
 };
 const forgotPasswordPage = {
   path: ENDPOINTS.AUTH.FORGOT_PASSWORD,
-  component: lazy(() => delayRoute()(import("../modules/auth/features/forgotPassword"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/auth/features/forgotPassword"))
+  ),
   title: `Forgot Password | ${WEB_NAME}`,
   Layout: DefaultLayout,
 };
@@ -78,47 +80,53 @@ const homePage = {
 const printDocumentPage = {
   path: ENDPOINTS.USER.PRINTDOCUMENT,
   Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/PrintDocument/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/PrintDocument/features"))
+  ),
   title: WEB_NAME,
 };
 const editDocumentPage = {
   path: ENDPOINTS.USER.EDITDOCUMENT,
   Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/EditDocument/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/EditDocument/features"))
+  ),
   title: WEB_NAME,
-}
+};
 const wepressLibraryPage = {
-  path: ENDPOINTS.WEPRESS_LIBRARY,
+  path: ENDPOINTS.USER.LIBRARY,
   Layout: SidebarLayout,
-  component: lazy(() => delayRoute()(import("../modules/wepressLibrary/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/wepressLibrary/features"))
+  ),
   title: `WePress Library | ${WEB_NAME}`,
 };
 const sharedWithMePage = {
   path: ENDPOINTS.SHARED_WITH_ME,
   Layout: SidebarLayout,
-  component: lazy(() => delayRoute()(import("../modules/sharedWithMe/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/sharedWithMe/features"))
+  ),
   title: `Shared With Me | ${WEB_NAME}`,
 };
 const myDocumentsPage = {
   path: ENDPOINTS.MY_DOCUMENTS,
   Layout: SidebarLayout,
-  component: lazy(() => delayRoute()(import("../modules/myDocuments/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/myDocuments/features"))
+  ),
   title: `My Documents | ${WEB_NAME}`,
 };
 
-export const privateRouteData = [
-  homePage,
-  printDocumentPage,
-  editDocumentPage
-];
+export const privateRouteData = [homePage, printDocumentPage, editDocumentPage];
 
 export const publicRoutesData = [
   landingPage,
   loginPage,
   forgotPasswordPage,
-  wepressLibraryPage,// Cần sửa
-  sharedWithMePage,// Cần sửa
-  myDocumentsPage// Cần sửa
+  wepressLibraryPage, // Cần sửa
+  sharedWithMePage, // Cần sửa
+  myDocumentsPage, // Cần sửa
 ];
 
 // Improved route rendering function
