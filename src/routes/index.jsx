@@ -14,7 +14,7 @@ import Loading from "../components/Loading";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { ENDPOINTS } from "./endPoints";
 import LandingLayout from "../layouts/LandingLayout";
-
+import HomeLayout from "../layouts/HomeLayout";
 const WEB_NAME = "WePress App";
 
 const RequiredAuth = ({ children, path }) => {
@@ -48,7 +48,8 @@ const delayRoute = (ms = 500) => {
 const landingPage = {
   path: ENDPOINTS.INDEX,
   Layout: LandingLayout,
-  component: lazy(() => delayRoute()(import("../modules/landing/features"))),
+  // component: lazy(() => delayRoute()(import("../modules/landing/features"))),
+  component: lazy(() => delayRoute()(import("../modules/home/features"))),
   title: WEB_NAME,
 };
 
@@ -65,11 +66,37 @@ const forgotPasswordPage = {
   Layout: DefaultLayout,
 };
 
-export const privateRouteData = [];
+const homePage = {
+  path: ENDPOINTS.USER.HOME,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/home/features"))),
+  title: WEB_NAME,
+};
+
+const printDocumentPage = {
+  path: ENDPOINTS.USER.PRINTDOCUMENT,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/PrintDocument/features"))),
+  title: WEB_NAME,
+};
+const editDocumentPage = {
+  path: ENDPOINTS.USER.EDITDOCUMENT,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/EditDocument/features"))),
+  title: WEB_NAME,
+}
+
+export const privateRouteData = [
+  homePage, 
+  printDocumentPage,
+  editDocumentPage
+];
+
 export const publicRoutesData = [
   landingPage, 
   loginPage,
-  forgotPasswordPage
+  forgotPasswordPage,
+  
 ];
 
 // Improved route rendering function

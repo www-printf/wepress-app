@@ -3,7 +3,7 @@ import qs from "qs";
 import { getConfig } from "../configs/getConfig.config";
 import { toast } from "react-toastify";
 import { store } from "../store";
-
+import { ENDPOINTS } from "../routes/endPoints";
 
 const paramsSerializer = (params) =>
     qs.stringify(params, { arrayFormat: "repeat" });
@@ -102,7 +102,7 @@ function userErrorHandler(error, next) {
 
 function unauthorizedErrorHandler(error, next) {
     if (isUnauthorized(error)) {
-        window.location.href = "/auth/login";
+        window.location.href = ENDPOINTS.AUTH.LOGIN;
     }
     if (!isResponseError(error) || !isUnauthorized(error)) {
         return next();
