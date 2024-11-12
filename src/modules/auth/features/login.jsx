@@ -1,18 +1,27 @@
 // Login.jsx
-import React, { useState } from "react";
-import {useAuth} from "../../../hooks/useAuth";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../../../hooks/useAuth";
 import logo from "../../../assets/icons/icon_printer_black.png";
-import { Link } from "react-router-dom";
-import { ENDPOINTS} from "../../../routes/endPoints";
+import { Link, useNavigate } from "react-router-dom";
+import { ENDPOINTS } from "../../../routes/endPoints";
+import LoginForm from "../components/form";
+
 const Login = () => {
-  const { login, isLoggingIn, loginError } = useAuth();
+  const { login, isLoggingIn, loginError, isAuthenticated } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     login({ email, password });
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(ENDPOINTS.USER.HOME); // Chuyển hướng đến trang chủ sau khi đăng nhập thành công
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -21,39 +30,18 @@ const Login = () => {
           <img src={logo} alt="WePress Logo" className="h-12 w-12 mb-2" />
           <h2 className="text-2xl font-semibold">WePress</h2>
         </div>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Nhập email của bạn"
-              required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Mật khẩu</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Nhập mật khẩu của bạn"
-              required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={isLoggingIn}
-            className="flex items-center justify-center w-full px-4 py-2 mt-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            Đăng nhập
-            <i className="fas fa-arrow-right ml-2"></i>
-          </button>
-          {loginError && <p className="text-red-500 text-sm mt-2">{loginError.message}</p>}
-        </form>
+
+        {/* Sử dụng LoginForm */}
+        <LoginForm
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          handleLogin={handleLogin}
+          isLoggingIn={isLoggingIn}
+          loginError={loginError}
+        />
+
         <div className="mt-4 text-center">
           <Link to={ENDPOINTS.AUTH.FORGOT_PASSWORD} className="text-sm text-blue-500 hover:underline">
             Quên mật khẩu

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import logo from "../../../assets/icons/icon_printer_black.png"; // Đảm bảo đường dẫn chính xác
 import { ENDPOINTS } from "../../../routes/endPoints";
+import { Link } from "react-router-dom";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
@@ -42,9 +43,9 @@ const ForgotPassword = () => {
           </button>
         </form>
         <div className="mt-4 text-center">
-          <a href="/login" className="text-sm text-blue-500 hover:underline">
+          <Link to={ENDPOINTS.AUTH.LOGIN} className="text-sm text-blue-500 hover:underline">
             Đăng nhập
-          </a>
+          </Link>
         </div>
       </div>
     </div>

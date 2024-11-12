@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-
 const LandingLayout = ({ children }) => {
   const [isLoginRequired, setIsLoginRequired] = useState(false);
 
