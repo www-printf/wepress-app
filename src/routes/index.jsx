@@ -102,7 +102,7 @@ const wepressLibraryPage = {
   title: `WePress Library | ${WEB_NAME}`,
 };
 const sharedWithMePage = {
-  path: ENDPOINTS.SHARED_WITH_ME,
+  path: ENDPOINTS.USER.SHARED_WITH_ME,
   Layout: SidebarLayout,
   component: lazy(() =>
     delayRoute()(import("../modules/sharedWithMe/features"))
@@ -110,7 +110,7 @@ const sharedWithMePage = {
   title: `Shared With Me | ${WEB_NAME}`,
 };
 const myDocumentsPage = {
-  path: ENDPOINTS.MY_DOCUMENTS,
+  path: ENDPOINTS.USER.MY_DOCUMENTS,
   Layout: SidebarLayout,
   component: lazy(() =>
     delayRoute()(import("../modules/myDocuments/features"))
