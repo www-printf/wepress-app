@@ -11,6 +11,11 @@ export const ENDPOINTS = Object.freeze({
         PRINTDOCUMENT: '/user/print-document',
         LIBRARY: '/user/library',
         EDITDOCUMENT: '/user/edit-document',
-    }
+    },
+
+    WEPRESS_LIBRARY: "/wepress-library",
+    SHARED_WITH_ME: "/shared-with-me",
+    MY_DOCUMENTS: "/my-documents"
+
 
 });

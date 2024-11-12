@@ -15,6 +15,8 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import { ENDPOINTS } from "./endPoints";
 import LandingLayout from "../layouts/LandingLayout";
 import HomeLayout from "../layouts/HomeLayout";
+import SidebarLayout from "../layouts/SidebarLayout";
+
 const WEB_NAME = "WePress App";
 
 const RequiredAuth = ({ children, path }) => {
@@ -85,18 +87,39 @@ const editDocumentPage = {
   component: lazy(() => delayRoute()(import("../modules/EditDocument/features"))),
   title: WEB_NAME,
 }
+const wepressLibraryPage = {
+  path: ENDPOINTS.WEPRESS_LIBRARY,
+  Layout: SidebarLayout,
+  component: lazy(() => delayRoute()(import("../modules/wepressLibrary/features"))),
+  title: `WePress Library | ${WEB_NAME}`,
+};
+const sharedWithMePage = {
+  path: ENDPOINTS.SHARED_WITH_ME,
+  Layout: SidebarLayout,
+  component: lazy(() => delayRoute()(import("../modules/sharedWithMe/features"))),
+  title: `Shared With Me | ${WEB_NAME}`,
+};
+const myDocumentsPage = {
+  path: ENDPOINTS.MY_DOCUMENTS,
+  Layout: SidebarLayout,
+  component: lazy(() => delayRoute()(import("../modules/myDocuments/features"))),
+  title: `My Documents | ${WEB_NAME}`,
+};
+
 
 export const privateRouteData = [
-  homePage, 
+  homePage,
   printDocumentPage,
   editDocumentPage
 ];
 
 export const publicRoutesData = [
-  landingPage, 
+  landingPage,
   loginPage,
   forgotPasswordPage,
-  
+  wepressLibraryPage,// Cần sửa
+  sharedWithMePage,// Cần sửa
+  myDocumentsPage// Cần sửa
 ];
 
 // Improved route rendering function
