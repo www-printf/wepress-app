@@ -1,0 +1,18 @@
+import React from "react";
+import icon_printer from "../../../assets/icons/ico_printer.png"
+export default function PaymentSuccess() {
+  return (
+    <div className="flex flex-col items-center justify-center  bg-gray-100 min-h-screen">
+      <img src={icon_printer} alt="PrinterLogo" className=""></img>
+      <h1 className="text-4xl font-bold text-green-600 mb-6">Thanh toán thành công!</h1>
+      <p className="text-lg text-gray-700">Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
+      <p className="text-lg text-gray-700">Mã giao dịch của bạn là: <strong>123456789</strong></p>
+      <button
+        className="mt-6 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
+        onClick={() => window.location.href = "/"} // Điều hướng về trang chủ
+      >
+        Quay về Trang Chủ
+      </button>
+    </div>
+  );
+}

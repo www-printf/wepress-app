@@ -9,12 +9,13 @@ const MoneyPanel = () => {
         <div className="flex items-center space-x-2">
             <img src={icon_info} alt="icon_info" className="h-8 w-8 fillter invert"/>
             <span>Bạn có thể in XX trang giấy A4</span>
+            
         </div>
 
         <div className=" border-t border-black w-full"></div>
 
-        <Link to="/buy-paper" className="p-2 rounded-lg hover:bg-gray-200 w-full text-left flex justify-center items-center space-x-2">
-          <span>Mua thêm giấy</span>
+        <Link to="/user/purchase-paper" className="p-2 rounded-lg hover:bg-gray-200 w-full text-left flex justify-center items-center space-x-2">
+          <span>Nạp thêm tiền</span>
         </Link>
         
       </div>
