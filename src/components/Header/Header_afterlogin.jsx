@@ -24,9 +24,9 @@ function HeaderAuthed() {
   // Tạo danh sách các liên kết
   const options = [
     { to: "/about", label: "Giới thiệu", activeOptions: { exact: true } },
-    { to: "/documents", label: "Tài liệu của tôi" },
-    { to: "/buy-paper", label: "Mua giấy in" },
-    { to: "/printer-status", label: "Tình trạng máy in" },
+    { to: "/my-documents", label: "Tài liệu của tôi" },
+    { to: "/user/purchase-paper", label: "Mua giấy in" },
+    { to: "/user/view-printer-status", label: "Tình trạng máy in" },
   ];
 
   return (
@@ -38,8 +38,10 @@ function HeaderAuthed() {
             alt="WePress Logo"
             className="tablet:h-4 h-10 w-10"
           />
-          <span className="font-bold text-xl">WePress</span>
-
+          <Link to="/user/home" className="flex items-center space-x-2">
+            <span className="font-bold text-xl">WePress</span>
+          </Link>
+          
           {/* Render các link với active class */}
           <div className="flex space-x-4">
             {options.map((option) => {

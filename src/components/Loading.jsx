@@ -1,5 +1,5 @@
 import { Spin } from "antd";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/icons/icon_printer_black.png";
 import { LoadingOutlined } from "@ant-design/icons";
 function Loading() {
   return (
