@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import icon_link from '../../../assets/icons/icon_link.png';
 import icon_up from '../../../assets/icons/icon_up.png';
-
+import GoogleDrive from './GoogleDrive';
 const UploadFromLink = ({ link, setLink, handleLinkSubmit, onClose }) => {
   const handleInputChange = (e) => {
     setLink(e.target.value);
@@ -42,13 +42,14 @@ const UploadFromLink = ({ link, setLink, handleLinkSubmit, onClose }) => {
             />
 
             {/* Nút Tải file lên */}
-            <button
+            {/* <button
                 onClick={handleLinkSubmit}
                 className="flex items-center justify-center w-1/4 bg-white text-black py-2 rounded-lg hover:bg-gray-300 transition duration-200 text-sm font-medium border-2 border-gray-200"
             >
                 <img src={icon_up} alt="Icon Up" className="w-5 h-5 mr-2" />
                 Tải file lên
-            </button>
+            </button> */}
+            <GoogleDrive></GoogleDrive>
     </div>
   );
 };
