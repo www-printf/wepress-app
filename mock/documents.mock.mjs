@@ -3,16 +3,32 @@ import ENDPOINTS from "../src/constants/apiEndpoints.mjs";
 // Tạo dữ liệu mẫu
 const generateMockDocuments = (count) => {
     const documents = [];
-    const types = ['pdf', 'doc', 'docx', 'txt', 'jpg'];
+    const types = ['pdf', 'doc', 'docx', 'txt', 'markdown', 'html'];
+
+    // URL mẫu cho tài liệu PDF
+    const samplePDFUrl = "https://www.orimi.com/pdf-test.pdf";
+
+    // Danh sách tác giả mẫu
+    const authors = [
+        "Nguyễn Văn A",
+        "Trần Thị B",
+        "Lê Văn C",
+        "Phạm Thị D",
+        "Hoàng Văn E",
+        "Đặng Thị F"
+    ];
 
     for (let i = 1; i <= count; i++) {
         documents.push({
             id: i,
             title: `Tài liệu ${i}`,
+            author: authors[Math.floor(Math.random() * authors.length)],
+            version: Math.floor(Math.random() * 5) + 1,
             type: types[Math.floor(Math.random() * types.length)],
             size: `${Math.floor(Math.random() * 10)}MB`,
             created_at: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toISOString(),
             thumbnail: `https://picsum.photos/300/400?random=${i}`,
+            url: samplePDFUrl
         });
     }
     return documents;
@@ -45,6 +61,16 @@ const getDocuments = (page, per_page, sort, order) => {
             const aSize = parseInt(a.size);
             const bSize = parseInt(b.size);
             return order === 'asc' ? aSize - bSize : bSize - aSize;
+        }
+        if (sort === 'author') {
+            return order === 'asc' ?
+                a.author.localeCompare(b.author) :
+                b.author.localeCompare(a.author);
+        }
+        if (sort === 'version') {
+            return order === 'asc' ?
+                a.version - b.version :
+                b.version - a.version;
         }
         return 0;
     });
