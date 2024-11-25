@@ -117,6 +117,36 @@ const myDocumentsPage = {
   ),
   title: `My Documents | ${WEB_NAME}`,
 };
+const purchasePaper = {
+  path: ENDPOINTS.USER.PURCHASE_PAPER,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/purchasepaper/features"))),
+  title: `Purchase Paper | ${WEB_NAME}`,
+};
+const purchasing = {
+  path: ENDPOINTS.USER.PURCHASING,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/purchasing/features"))),
+  title: `Purchasing | ${WEB_NAME}`,
+};
+const paymentSuccess = {
+  path: ENDPOINTS.USER.PAYMENT_SUCCESS,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/paymentSuccess/features"))),
+  title: `Payment Success | ${WEB_NAME}`,
+};
+const viewPrinterStatus = {
+  path: ENDPOINTS.USER.VIEW_PRINTER_STATUS,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/viewPrinterStatus/features"))),
+  title: `View Printer Status | ${WEB_NAME}`,
+};
+const purchaseHistory = {
+  path: ENDPOINTS.USER.PURCHASE_HISTORY,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/purchaseHistory/features"))),
+  title: `Purchase History | ${WEB_NAME}`,
+};
 
 export const privateRouteData = [
   homePage,
@@ -125,6 +155,11 @@ export const privateRouteData = [
   wepressLibraryPage, // Cần sửa
   sharedWithMePage, // Cần sửa
   myDocumentsPage, // Cần sửa
+  purchasePaper,
+  purchasing,
+  viewPrinterStatus,
+  paymentSuccess,
+  purchaseHistory,
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage];
