@@ -25,7 +25,7 @@ const UserPanel = () => {
             alt="icon_people"
             className="h-10 w-10 filter invert"
           />
-          <span>Tên người dùng</span>
+          <Link to={ENDPOINTS.USER.INFO}>Tên người dùng</Link>
         </div>
         <div className=" border-t border-black w-full"></div>
 
@@ -35,7 +35,7 @@ const UserPanel = () => {
             alt="icon_list"
             className="h-8 w-8 filter invert"
           />
-          <span>Lịch sử in ấn</span>
+          <Link to={ENDPOINTS.USER.PRINT_HISTORY}>Lịch sử in ấn</Link>
         </button>
 
         <button className="bg-white p-2 rounded-lg hover:bg-gray-100 w-full text-left flex items-center space-x-2 border-2 border-gray-200">

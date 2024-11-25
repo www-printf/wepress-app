@@ -77,6 +77,13 @@ const homePage = {
   title: WEB_NAME,
 };
 
+const infoPage = {
+  path: ENDPOINTS.USER.INFO,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/userInfo/features"))),
+  title: WEB_NAME,
+}
+
 const printDocumentPage = {
   path: ENDPOINTS.USER.PRINTDOCUMENT,
   Layout: DefaultLayout,
@@ -93,6 +100,14 @@ const editDocumentPage = {
   ),
   title: WEB_NAME,
 };
+const printHistoryPage = {
+  path: ENDPOINTS.USER.PRINT_HISTORY,
+  Layout: DefaultLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/printHistory/features"))
+  ),
+  title: WEB_NAME,
+}
 const wepressLibraryPage = {
   path: ENDPOINTS.USER.LIBRARY,
   Layout: SidebarLayout,
@@ -160,6 +175,8 @@ export const privateRouteData = [
   viewPrinterStatus,
   paymentSuccess,
   purchaseHistory,
+  infoPage, 
+  printHistoryPage,
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage];

@@ -2,17 +2,32 @@ import React, { useState } from 'react';
 import UploadFromLink from './UploadFromLink';
 import UploadFromDrive from './UploadFromDrive';
 
-const Dropdown = ({ isOpen, onSelect, inputType, link, setLink, handleLinkSubmit }) => {
+const Dropdown = ({
+  isOpen,
+  onSelect,
+  inputType,
+  handleFileFromDevice,
+  handleFileFromLink,
+  handleGoogleDriveSubmit,
+}) => {
+  const [link, setLink] = useState('');
   const [showUploadFromLink, setShowUploadFromLink] = useState(false);
   const [showUploadFromDrive, setShowUploadFromDrive] = useState(false);
 
   const handleSelect = (type) => {
     onSelect(type);
+
     if (type === 'link') {
       setShowUploadFromLink(true);
     } else if (type === 'googleDrive') {
       setShowUploadFromDrive(true);
     }
+  };
+
+  const handleLinkSubmit = () => {
+    handleFileFromLink(link);
+    setLink('');
+    setShowUploadFromLink(false);
   };
 
   return (
@@ -36,29 +51,33 @@ const Dropdown = ({ isOpen, onSelect, inputType, link, setLink, handleLinkSubmit
             type="file"
             id="fileInput"
             className="hidden"
-            onChange={(e) => onSelect('device', e.target.files[0])}
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                handleFileFromDevice(e.target.files[0]); // Gọi handleFileFromDevice
+              }
+            }}
           />
         </div>
       )}
 
-      {/* Popup cho UploadFromLink */}
+      {/* Popup for UploadFromLink */}
       {showUploadFromLink && (
         <div className="fixed inset-0 bg-gray-100 bg-opacity-90 flex items-center justify-center z-20">
           <UploadFromLink
             link={link}
             setLink={setLink}
             handleLinkSubmit={handleLinkSubmit}
-            onClose={() => setShowUploadFromLink(false)} // Đóng chỉ component UploadFromLink
+            onClose={() => setShowUploadFromLink(false)}
           />
         </div>
       )}
 
-      {/* Popup cho UploadFromDrive */}
+      {/* Popup for UploadFromDrive */}
       {showUploadFromDrive && (
         <div className="fixed inset-0 bg-gray-100 bg-opacity-90 flex items-center justify-center z-20">
           <UploadFromDrive
-            onConnect={() => onSelect('googleDrive')}
-            onClose={() => setShowUploadFromDrive(false)} // Đóng chỉ component UploadFromDrive
+            onConnect={handleGoogleDriveSubmit}
+            onClose={() => setShowUploadFromDrive(false)}
           />
         </div>
       )}
@@ -67,3 +86,7 @@ const Dropdown = ({ isOpen, onSelect, inputType, link, setLink, handleLinkSubmit
 };
 
 export default Dropdown;
+
+
+
+
