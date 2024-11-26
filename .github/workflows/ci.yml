@@ -39,3 +39,4 @@ jobs:
         with:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          secret-envs: VITE_API_URL=https://api.printf.store VITE_WEB_NAME=WePress

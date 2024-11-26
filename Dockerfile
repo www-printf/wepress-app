@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install
-COPY . . 
+COPY . .
 ENV NODE_ENV=production
 RUN yarn build
 
