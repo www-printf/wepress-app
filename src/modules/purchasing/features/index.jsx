@@ -51,7 +51,7 @@ export default function PurchasePaper() {
               </div>
               <button
                 className="w-64 mt-4 bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-800 transition"
-                onClick={() => window.location.href = "/"} // Điều hướng về trang chủ
+                onClick={() => window.location.href = "/user/payment-success"} // Điều hướng về trang thanh toán thành công
               >
                 Xác nhận thanh toán
               </button>
