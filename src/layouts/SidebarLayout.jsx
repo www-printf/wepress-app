@@ -57,23 +57,14 @@ const SidebarLayout = ({ children }) => {
                                         <span>Thêm mới</span>
                                     </Sidebar.Item>
 
-                                    <Sidebar.Item
-                                        href={ENDPOINTS.USER.LIBRARY}
-                                        icon={HiInbox}
-                                        active={location.pathname === ENDPOINTS.USER.LIBRARY}
-                                        className="justify-start"
-                                    >
-                                        <span>Thư viện Wepress</span>
-                                    </Sidebar.Item>
-
-                                    <Sidebar.Item
+                                    {/* <Sidebar.Item
                                         href={ENDPOINTS.USER.SHARED_WITH_ME}
                                         icon={() => <img src={icon_share} alt="icon_share" />}
                                         active={location.pathname === ENDPOINTS.USER.SHARED_WITH_ME}
                                         className="justify-start"
                                     >
                                         <span>Được chia sẻ với tôi</span>
-                                    </Sidebar.Item>
+                                    </Sidebar.Item> */}
 
                                     <Sidebar.Item
                                         href={ENDPOINTS.USER.MY_DOCUMENTS}
@@ -82,6 +73,15 @@ const SidebarLayout = ({ children }) => {
                                         className="justify-start"
                                     >
                                         <span>Tài liệu của tôi</span>
+                                    </Sidebar.Item>
+
+                                    <Sidebar.Item
+                                        href={ENDPOINTS.USER.LIBRARY}
+                                        icon={HiInbox}
+                                        active={location.pathname === ENDPOINTS.USER.LIBRARY}
+                                        className="justify-start"
+                                    >
+                                        <span>Thư viện Wepress</span>
                                     </Sidebar.Item>
                                 </Sidebar.ItemGroup>
                             </Sidebar.Items>
