@@ -41,7 +41,7 @@ function HeaderAuthed() {
             />
             <span className="font-bold text-xl">WePress</span>
           </Link>
-          
+
           {/* Render các link với active class */}
           <div className="flex space-x-4">
             {options.map((option) => {
@@ -53,7 +53,14 @@ function HeaderAuthed() {
                 <Link
                   to={option.to}
                   key={option.to}
-                  className={`text-lg p-2 ${match ? "font-bold" : ""}`}
+                  className={`
+                    text-lg p-2 
+                    transition-all duration-500 
+                    hover:text-black
+                    hover:bg-gray-100 
+                    rounded-md 
+                    ${match ? "font-bold text-black-600 bg-gray-100" : ""}
+                  `}
                 >
                   {option.label}
                 </Link>
@@ -83,7 +90,7 @@ function HeaderAuthed() {
             <img
               src={icon_people}
               alt="icon_people"
-              className="h-8 w-8 filter invert"
+              className="h-8 w-8 filter"
             />
           </button>
         </div>

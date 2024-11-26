@@ -82,7 +82,7 @@ const infoPage = {
   Layout: DefaultLayout,
   component: lazy(() => delayRoute()(import("../modules/userInfo/features"))),
   title: WEB_NAME,
-}
+};
 
 const printDocumentPage = {
   path: ENDPOINTS.USER.PRINTDOCUMENT,
@@ -107,7 +107,7 @@ const printHistoryPage = {
     delayRoute()(import("../modules/printHistory/features"))
   ),
   title: WEB_NAME,
-}
+};
 const wepressLibraryPage = {
   path: ENDPOINTS.USER.LIBRARY,
   Layout: SidebarLayout,
@@ -135,7 +135,9 @@ const myDocumentsPage = {
 const purchasePaper = {
   path: ENDPOINTS.USER.PURCHASE_PAPER,
   Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/purchasepaper/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/purchasePaper/features"))
+  ),
   title: `Purchase Paper | ${WEB_NAME}`,
 };
 const purchasing = {
@@ -147,22 +149,27 @@ const purchasing = {
 const paymentSuccess = {
   path: ENDPOINTS.USER.PAYMENT_SUCCESS,
   Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/paymentSuccess/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/paymentSuccess/features"))
+  ),
   title: `Payment Success | ${WEB_NAME}`,
 };
 const viewPrinterStatus = {
   path: ENDPOINTS.USER.VIEW_PRINTER_STATUS,
   Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/viewPrinterStatus/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/viewPrinterStatus/features"))
+  ),
   title: `View Printer Status | ${WEB_NAME}`,
 };
 const purchaseHistory = {
   path: ENDPOINTS.USER.PURCHASE_HISTORY,
   Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/purchaseHistory/features"))),
+  component: lazy(() =>
+    delayRoute()(import("../modules/purchaseHistory/features"))
+  ),
   title: `Purchase History | ${WEB_NAME}`,
 };
-
 
 export const privateRouteData = [
   homePage,
@@ -176,7 +183,7 @@ export const privateRouteData = [
   viewPrinterStatus,
   paymentSuccess,
   purchaseHistory,
-  infoPage, 
+  infoPage,
   printHistoryPage,
 ];
 
