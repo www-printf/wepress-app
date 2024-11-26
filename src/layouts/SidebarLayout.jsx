@@ -50,7 +50,7 @@ const SidebarLayout = ({ children }) => {
                                     </button>
 
                                     <Sidebar.Item
-                                        href="#"
+                                        href={ENDPOINTS.USER.PRINTDOCUMENT}
                                         icon={() => <img src={icon_add} alt="icon_add" />}
                                         className="my-7 justify-start"
                                     >
