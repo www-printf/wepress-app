@@ -135,7 +135,7 @@ const myDocumentsPage = {
 const purchasePaper = {
   path: ENDPOINTS.USER.PURCHASE_PAPER,
   Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/purchasepaper/features"))),
+  component: lazy(() => delayRoute()(import("../modules/purchasePaper/features"))),
   title: `Purchase Paper | ${WEB_NAME}`,
 };
 const purchasing = {
