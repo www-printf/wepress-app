@@ -5,7 +5,7 @@ import ico_figma from "../../assets/icons/ico_figma.png";
 import ico_mail from "../../assets/icons/ico_mail.png";
 const Footer = () => {
   return (
-    <footer className="bg-white text-black p-4 ">
+    <footer className="bg-white text-black p-4  ">
       <div className="flex justify-center items-center space-x-10">
         <div className="hidden md:block border-t border-black w-1/4"></div>
         <div className="flex items-center space-x-6">
@@ -18,7 +18,7 @@ const Footer = () => {
             <i className="fab fa-figma"></i>
           </a>
           <a href="mailto:contact@wepress.com" className="text-3xl">
-            <img src={ico_mail} className="h-10 w-10 filter invert"  />
+            <img src={ico_mail} className="h-10 w-10 filter invert" />
             <i className="fas fa-envelope"></i>
           </a>
         </div>
