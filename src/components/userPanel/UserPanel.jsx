@@ -3,7 +3,7 @@ import icon_list from "../../assets/icons/icon_list.png";
 import icon_logout from "../../assets/icons/icon_logout.png";
 import icon_people from "../../assets/icons/icon_avarta.png";
 import { useAuth } from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ENDPOINTS } from "../../routes/endPoints";
 
 const UserPanel = () => {
@@ -25,7 +25,7 @@ const UserPanel = () => {
             alt="icon_people"
             className="h-10 w-10 filter invert"
           />
-          <span>Tên người dùng</span>
+          <Link to={ENDPOINTS.USER.INFO}>Tên người dùng</Link>
         </div>
         <div className=" border-t border-black w-full"></div>
 
@@ -35,7 +35,7 @@ const UserPanel = () => {
             alt="icon_list"
             className="h-8 w-8 filter invert"
           />
-          <span>Lịch sử in ấn</span>
+          <Link to={ENDPOINTS.USER.PRINT_HISTORY}>Lịch sử in ấn</Link>
         </button>
 
         <button className="bg-white p-2 rounded-lg hover:bg-gray-100 w-full text-left flex items-center space-x-2 border-2 border-gray-200">
@@ -44,7 +44,7 @@ const UserPanel = () => {
             alt="icon_list"
             className="h-8 w-8 filter invert"
           />
-          <span>Lịch sử giao dịch</span>
+          <Link to={ENDPOINTS.USER.PURCHASE_HISTORY}>Lịch sử giao dịch</Link>
         </button>
 
         <div className=" border-t border-black w-full"></div>

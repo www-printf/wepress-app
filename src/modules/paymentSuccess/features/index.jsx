@@ -1,5 +1,5 @@
 import React from "react";
-import icon_printer from "../../../assets/icons/ico_printer.png"
+import icon_printer from "../../../assets/icons/icon_printer_black.png"
 export default function PaymentSuccess() {
   return (
     <div className="flex flex-col items-center justify-center  bg-gray-100 min-h-screen">

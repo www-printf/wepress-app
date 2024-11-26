@@ -1,6 +1,9 @@
 import React from 'react';
 import icon_drive from '../../../assets/icons/icon_drive.png';
-
+// import GoogleDrive from './GoogleDrive';
+// import SaveDriveFilesToLibrary from './SaveDriveFilesToLibrary';
+// import Signinbutton from './Signinbutton';
+import Drive from './Drive';
 const UploadFromDrive = ({ onConnect, onClose }) => {
   return (
     <div className="flex flex-col items-center bg-white  rounded-lg shadow-2xl w-full max-w-[800px] h-full max-h-[500px] relative">
@@ -31,13 +34,7 @@ const UploadFromDrive = ({ onConnect, onClose }) => {
         Vui lòng xác thực với Google Drive để chọn file
       </p>
 
-      {/* Nút Kết nối tới Google Drive */}
-      <button
-        onClick={onConnect}
-        className="bg-white text-black border-2 border-gray-300 py-2 px-4 rounded-md hover:bg-gray-300 transition duration-200"
-      >
-        Kết nối tới Google Drive
-      </button>
+      <Drive></Drive>
     </div>
   );
 };
