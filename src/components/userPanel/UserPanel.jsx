@@ -3,7 +3,7 @@ import icon_list from "../../assets/icons/icon_list.png";
 import icon_logout from "../../assets/icons/icon_logout.png";
 import icon_people from "../../assets/icons/icon_avarta.png";
 import { useAuth } from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ENDPOINTS } from "../../routes/endPoints";
 
 const UserPanel = () => {
