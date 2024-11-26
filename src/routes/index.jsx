@@ -163,6 +163,7 @@ const purchaseHistory = {
   title: `Purchase History | ${WEB_NAME}`,
 };
 
+
 export const privateRouteData = [
   homePage,
   printDocumentPage,

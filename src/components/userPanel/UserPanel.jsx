@@ -44,7 +44,7 @@ const UserPanel = () => {
             alt="icon_list"
             className="h-8 w-8 filter invert"
           />
-          <span>Lịch sử giao dịch</span>
+          <Link to={ENDPOINTS.USER.PURCHASE_HISTORY}>Lịch sử giao dịch</Link>
         </button>
 
         <div className=" border-t border-black w-full"></div>

@@ -33,12 +33,12 @@ function HeaderAuthed() {
     <>
       <header className="bg-white text-black p-4 flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <img
-            src={ico_printer}
-            alt="WePress Logo"
-            className="tablet:h-4 h-10 w-10"
-          />
           <Link to="/user/home" className="flex items-center space-x-2">
+            <img
+              src={ico_printer}
+              alt="WePress Logo"
+              className="tablet:h-4 h-10 w-10"
+            />
             <span className="font-bold text-xl">WePress</span>
           </Link>
           
