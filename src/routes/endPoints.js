@@ -18,7 +18,7 @@ export const ENDPOINTS = Object.freeze({
     PURCHASE_HISTORY: "/user/purchase-history",
     INFO: "/user/info",
     PRINT_HISTORY: "/user/print-history",
+    SHARED_WITH_ME: "/shared-with-me",
+    MY_DOCUMENTS: "/my-documents",
   },
-  SHARED_WITH_ME: "/shared-with-me",
-  MY_DOCUMENTS: "/my-documents",
 });
