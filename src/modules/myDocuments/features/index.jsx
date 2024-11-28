@@ -16,13 +16,13 @@ import { ENDPOINTS } from "../../../routes/endPoints";
 import request from "../../../utils/request";
 
 const fetchDocuments = async ({ page, per_page, sort, order }) => {
-  const response = await request.get(
-    `/documents?page=${page}&per_page=${per_page}&sort=${sort}&order=${order}`
-  );
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json();
+  const { data } = await request.get(`/documents/download`, {
+    page,
+    per_page,
+    sort,
+    order,
+  });
+  return data;
 };
 
 const MyDocuments = () => {
