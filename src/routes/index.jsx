@@ -184,6 +184,14 @@ const printerInfo = {
   ),
   title: `Printer Information | ${WEB_NAME}`,
 };
+const adminDashboard = {
+  path: ENDPOINTS.ADMIN.DASHBOARD,
+  Layout: SidebarLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/adminDashboard/features"))
+  ),
+  title: `Admin Dashboard | ${WEB_NAME}`,
+}
 
 export const privateRouteData = [
   homePage,
@@ -200,6 +208,7 @@ export const privateRouteData = [
   infoPage,
   printHistoryPage,
   printerInfo,
+  adminDashboard,
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];
