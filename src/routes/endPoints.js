@@ -6,6 +6,10 @@ export const ENDPOINTS = Object.freeze({
 
   INDEX: "/",
 
+  DOCUMENTS: {
+    MINE: "/documents/mine",
+  },
+
   USER: {
     HOME: "/user/home",
     PRINTDOCUMENT: "/user/print-document",
