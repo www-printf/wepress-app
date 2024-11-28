@@ -29,4 +29,8 @@ export const ENDPOINTS = Object.freeze({
   },
 
   ABOUT: "/about",
+
+  ADMIN: {
+    LANDINGPAGE: "/admin/landing-page"
+  }
 });
