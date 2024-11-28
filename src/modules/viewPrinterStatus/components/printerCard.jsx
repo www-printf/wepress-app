@@ -1,7 +1,7 @@
-import { Progress } from 'flowbite-react';
+import { Link } from "react-router-dom";
 import printer_img from '../../../assets/images/printer_img.png';
 
-const PrinterCard = ({ printerName, printerID, roomNumber, locationName, status }) => {
+const PrinterCard = ({ printerName, printerID, roomNumber, status }) => {
   const statusColors = {
     "Sẵn sàng để in": "bg-green-500",
     "Đang bảo trì": "bg-red-500",
@@ -29,30 +29,9 @@ const PrinterCard = ({ printerName, printerID, roomNumber, locationName, status 
       </p> */}
       
       <div className="mt-4 flex justify-center">
-        <button className="border-2 bg-violet-300 hover:bg-violet-400 hover:border-blue-400 rounded-lg w-[70px] h-[39px] font-medium">Chi tiết</button>
+        <Link to={`/user/printer-info/${printerID}`} className="px-4 py-1 text-center border-2 bg-violet-300 hover:bg-violet-400 hover:border-blue-400 
+        rounded-lg font-medium">Chi tiết</Link>
       </div>
-
-      {/* <div className="mb-4">
-        <div className="mt-2">Tài nguyên in ấn:</div>
-        <div className="ml-4">
-          <div className="flex justify-between">
-            <div className="mr-2">Số trang giấy:</div>
-            <div className="mr-14">
-                <p>A5: {paperA5} trang</p>
-                <p>A4: {paperA4} trang</p>
-                <p>A3: {paperA3} trang</p>
-            </div>
-          </div>
-        
-          <div className="w-full max-w-md">
-            <div className="flex justify-between mb-2">
-              <span>Lượng mực</span>
-              <span>{inkLevel}%</span>
-            </div>
-            <Progress progress={inkLevel} color={inkLevel > 20 ? "green" : "red"} />
-          </div>
-        </div>  
-      </div> */}
     </div>
   );
 };

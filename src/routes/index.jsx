@@ -76,6 +76,12 @@ const homePage = {
   component: lazy(() => delayRoute()(import("../modules/home/features"))),
   title: WEB_NAME,
 };
+const about = {
+  path: ENDPOINTS.ABOUT,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/about/features"))),
+  title: WEB_NAME,
+};
 
 const infoPage = {
   path: ENDPOINTS.USER.INFO,
@@ -170,6 +176,14 @@ const purchaseHistory = {
   ),
   title: `Purchase History | ${WEB_NAME}`,
 };
+const printerInfo = {
+  path: ENDPOINTS.USER.PRINTER_INFO,
+  Layout: DefaultLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/printerInfo/features"))
+  ),
+  title: `Printer Information | ${WEB_NAME}`,
+};
 const printingStatus = {
   path: ENDPOINTS.USER.PRINTING_STATUS,
   Layout: DefaultLayout,
@@ -191,10 +205,9 @@ export const privateRouteData = [
   purchaseHistory,
   infoPage,
   printHistoryPage,
-  printingStatus,
 ];
 
-export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage];
+export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];
 
 // Improved route rendering function
 const renderRoutes = (routes, isPrivate = false) => {

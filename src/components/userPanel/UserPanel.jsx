@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import icon_list from "../../assets/icons/icon_list.png";
 import icon_logout from "../../assets/icons/icon_logout.png";
 import icon_people from "../../assets/icons/icon_avarta.png";
@@ -12,6 +12,19 @@ const UserPanel = () => {
 
   const [isOpen, setIsOpen] = useState(true); // Trạng thái mở/đóng bảng chọn
 
+  /* Xử lý click ra ngoài để đóng panel */
+  const panelRef = useRef(null); // Tạo ref cho bảng chọn
+  useEffect(() => { // Hàm xử lý khi click bên ngoài bảng chọn
+    const handleClickOutside = (event) => {
+      if (panelRef.current && !panelRef.current.contains(event.target)) {
+        setIsOpen(false); // Đóng bảng chọn nếu click ra ngoài
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside); // Thêm event listener
+    return () => {document.removeEventListener("mousedown", handleClickOutside)}; // Xóa event listener khi component bị hủy
+  }, []);
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigate(ENDPOINTS.AUTH.LOGIN, { replace: true }); // Điều hướng về trang login nếu chưa xác thực
@@ -21,7 +34,7 @@ const UserPanel = () => {
   if (!isOpen) return null; // Ẩn bảng chọn nếu `isOpen` là false
 
   return (
-    <div className="absolute top-16 right-0 p-[10px] text-black w-[300px] h-[220px] z-50">
+    <div ref={panelRef} className="absolute top-16 right-0 p-[10px] text-black w-[300px] h-[220px] z-50">
       <div className="bg-white rounded-lg p-4 shadow-lg space-y-4 border-2 border-black">
         <div className="flex items-center space-x-2">
           <img
@@ -73,22 +86,3 @@ const UserPanel = () => {
 };
 
 export default UserPanel;
-
-//thêm nếu muốn click ra ngoài thì đóng bảng chọn:
-// thêm ở dòng 14
-// const panelRef = useRef(null); // Tạo ref cho bảng chọn
-  // useEffect(() => { // Hàm xử lý khi click bên ngoài bảng chọn
-  //   const handleClickOutside = (event) => {
-  //     if (panelRef.current && !panelRef.current.contains(event.target)) {
-  //       setIsOpen(false); // Đóng bảng chọn nếu click ra ngoài
-  //     }
-  //   };
-    
-  //   document.addEventListener("mousedown", handleClickOutside); // Thêm event listener
-  //   return () => {
-  //     // Xóa event listener khi component bị hủy
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
-
-  // thêm trong thẻ div ở dòng 24: ref={panelRef}
