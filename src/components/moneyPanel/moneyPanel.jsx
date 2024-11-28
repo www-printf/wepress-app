@@ -1,11 +1,26 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import icon_info from "../../assets/icons/icon_info.png";
 import { Link } from "react-router-dom";
 const MoneyPanel = () => { 
   const [isOpen, setIsOpen] = useState(true); // Trạng thái mở/đóng bảng chọn
+
+  /* Xử lý click ra ngoài để đóng panel */
+  const panelRef = useRef(null); // Tạo ref cho bảng chọn
+  useEffect(() => { // Hàm xử lý khi click bên ngoài bảng chọn
+    const handleClickOutside = (event) => {
+      if (panelRef.current && !panelRef.current.contains(event.target)) {
+        setIsOpen(false); // Đóng bảng chọn nếu click ra ngoài
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside); // Thêm event listener
+    return () => {document.removeEventListener("mousedown", handleClickOutside)}; // Xóa event listener khi component bị hủy
+  }, []);
+  
   if (!isOpen) return null; // Ẩn bảng chọn nếu `isOpen` là false
+
   return (
-    <div className="absolute top-16 right-0 p-[10px] text-black w-[300px] h-[200px] "> 
+    <div ref={panelRef} className="absolute top-16 right-0 p-[10px] text-black w-[300px] h-[200px] "> 
       <div className="bg-white rounded-lg p-4 shadow-lg space-y-4 border-2 border-black">
 
         <div className="flex items-center space-x-2">

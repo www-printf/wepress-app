@@ -7,8 +7,10 @@ function HeaderunAuth({ isLoginRequired, onLoginClick }){
   return (
     <header className="bg-white text-black p-4 flex justify-between items-center h-[50px]">
       <div className="flex items-center space-x-4">
-        <img src={ico_printer} alt="WePress Logo" className="h-10 w-10" />
-        <span className="font-bold text-xl">WePress</span>
+        <Link to="/" className="flex items-center space-x-2">
+          <img src={ico_printer} alt="WePress Logo" className="h-10 w-10" />
+          <span className="font-bold text-xl">WePress</span>
+        </Link>
         <Link to="/about" className="text-lg">
           Giới thiệu
         </Link>

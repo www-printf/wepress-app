@@ -11,12 +11,12 @@ const PaperPackage = () => {
     },
     {
       title: "Gói 100 credits",
-      price: "30.000",
+      price: "38.000",
       link: "/user/purchasing",
     },
     {
       title: "Gói 200 credits",
-      price: "40.000",
+      price: "70.000",
       link: "/user/purchasing",
     },
   ];

@@ -17,9 +17,9 @@ function Loading() {
       }}
     >
       <img src={logo} width={150} height={"auto"} />
-      <Spin
+      <Spin className="mt-6"
         indicator={
-          <LoadingOutlined style={{ fontSize: 24, color: "green" }} spin />
+          <LoadingOutlined style={{ fontSize: 24, color: "blue" }} spin />
         }
       />
     </div>
