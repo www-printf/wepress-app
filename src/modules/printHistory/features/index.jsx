@@ -32,6 +32,60 @@ const PrintHistoryTable = () => {
       pageCount: '10',
       printDate: 'DD/MM/YYYY',
       status: 'interrupted'
+    },
+    {
+      id: 'SPS_00001',
+      printerId: 'CS2_H6_110_1',
+      documentName: 'BTL2_20241.pdf',
+      paperSize: 'A4',
+      pageCount: '26',
+      printDate: 'DD/MM/YYYY',
+      status: 'completed'
+    },
+    {
+      id: 'SPS_00002',
+      printerId: 'CS1_B1_210_3',
+      documentName: 'DCMH.SP1039_History of Vietnamese C...Party.pdf',
+      paperSize: 'A3',
+      pageCount: '40',
+      printDate: 'DD/MM/YYYY',
+      status: 'printing'
+    },
+    {
+      id: 'SPS_00012',
+      printerId: 'CS2_H3_103_2',
+      documentName: 'BTL LSĐ - Phần 3.1.docx',
+      paperSize: 'A4',
+      pageCount: '10',
+      printDate: 'DD/MM/YYYY',
+      status: 'interrupted'
+    },
+    {
+      id: 'SPS_00001',
+      printerId: 'CS2_H6_110_1',
+      documentName: 'BTL2_20241.pdf',
+      paperSize: 'A4',
+      pageCount: '26',
+      printDate: 'DD/MM/YYYY',
+      status: 'completed'
+    },
+    {
+      id: 'SPS_00002',
+      printerId: 'CS1_B1_210_3',
+      documentName: 'DCMH.SP1039_History of Vietnamese C...Party.pdf',
+      paperSize: 'A3',
+      pageCount: '40',
+      printDate: 'DD/MM/YYYY',
+      status: 'printing'
+    },
+    {
+      id: 'SPS_00012',
+      printerId: 'CS2_H3_103_2',
+      documentName: 'BTL LSĐ - Phần 3.1.docx',
+      paperSize: 'A4',
+      pageCount: '10',
+      printDate: 'DD/MM/YYYY',
+      status: 'interrupted'
     }
   ];
 
