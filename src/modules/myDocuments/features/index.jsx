@@ -17,10 +17,12 @@ import request from "../../../utils/request";
 
 const fetchDocuments = async ({ page, per_page, sort, order }) => {
   const { data } = await request.get(`/documents/download`, {
-    page,
-    per_page,
-    sort,
-    order,
+    params: {
+      page,
+      per_page,
+      sort,
+      order,
+    },
   });
   return data;
 };
