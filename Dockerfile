@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN yarn install
 COPY . .
 ENV NODE_ENV=production
-ENV VITE_API_URL=https://api.printf.store
+ENV VITE_API_URL=/api/v1
 ENV VITE_WEB_NAME=WePress
 RUN yarn build
 
