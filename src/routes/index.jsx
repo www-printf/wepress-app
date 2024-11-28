@@ -184,12 +184,6 @@ const printerInfo = {
   ),
   title: `Printer Information | ${WEB_NAME}`,
 };
-const printingStatus = {
-  path: ENDPOINTS.USER.PRINTING_STATUS,
-  Layout: DefaultLayout,
-  component: lazy(() => delayRoute()(import("../modules/printingStatus/features"))),
-  title: `Printing Status | ${WEB_NAME}`,
-};
 
 export const privateRouteData = [
   homePage,
@@ -205,6 +199,7 @@ export const privateRouteData = [
   purchaseHistory,
   infoPage,
   printHistoryPage,
+  printerInfo,
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];
@@ -249,7 +244,6 @@ const AppRoutes = () => {
       <Routes>
         {renderRoutes(publicRoutesData)}
         {renderRoutes(privateRouteData, true)}
-        <Route path="*" element={<Navigate to={ENDPOINTS.INDEX} />} />
       </Routes>
     </BrowserRouter>
   );
