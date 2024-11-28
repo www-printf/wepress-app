@@ -1,34 +1,54 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Select, Pagination, Spinner, Modal } from "flowbite-react";
-import { HiViewGrid, HiViewList, HiArrowUp, HiArrowDown, HiEye, HiDownload, HiDotsVertical, HiX } from "react-icons/hi";
+import {
+    HiViewGrid,
+    HiViewList,
+    HiArrowUp,
+    HiArrowDown,
+    HiEye,
+    HiDownload,
+    HiDotsVertical,
+    HiX,
+} from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
+import { ENDPOINTS } from "../../../routes/endPoints";
+import request from "../../../utils/request";
 
-const fetchDocuments = async ({ page, per_page, sort, order }) => {
-    const response = await fetch(`/api/documents?page=${page}&per_page=${per_page}&sort=${sort}&order=${order}`);
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json();
+const fetchDocuments = async ({ page, per_page }) => {//, sort, order }) => {
+    const { documents: data } = await request.get(`/documents/download`, {
+        params: {
+            page,
+            per_page,
+            // sort,
+            // order,
+        },
+    });
+
+    return data;
 };
 
-const WePressLibrary = () => {
+const MyDocuments = () => {
     const [viewMode, setViewMode] = useState("grid");
     const [currentPage, setCurrentPage] = useState(1);
     const [sortBy, setSortBy] = useState("name");
     const [sortOrder, setSortOrder] = useState("asc");
 
-    const [showModal, setShowModal] = useState(false);
-    const [selectedDoc, setSelectedDoc] = useState(null);
+    // const [showModal, setShowModal] = useState(false);
+    // const [selectedDoc, setSelectedDoc] = useState(null);
 
     const { data, isLoading, error } = useQuery({
-        queryKey: ['documents', currentPage, sortBy, sortOrder],
-        queryFn: () => fetchDocuments({
-            page: currentPage,
-            per_page: 10,
-            sort: sortBy,
-            order: sortOrder
-        })
+        queryKey: ["documents", currentPage],//, sortBy, sortOrder],
+        queryFn: () =>
+            fetchDocuments({
+                page: currentPage,
+                per_page: 10,
+                // sort: sortBy,
+                // order: sortOrder,
+            }),
     });
+
+    const navigate = useNavigate();
 
     const handleSort = (field) => {
         if (sortBy === field) {
@@ -39,10 +59,10 @@ const WePressLibrary = () => {
         }
     };
 
-    const handleViewDocument = (doc) => {
-        setSelectedDoc(doc);
-        setShowModal(true);
-    };
+    // const handleViewDocument = (doc) => {
+    //     setSelectedDoc(doc);
+    //     setShowModal(true);
+    // };
 
     // const handleDownload = (doc) => {
     //     const link = document.createElement('a');
@@ -54,7 +74,9 @@ const WePressLibrary = () => {
     // };
 
     if (error) {
-        return <div className="text-red-500">Đã có lỗi xảy ra: {error.message}</div>;
+        return (
+            <div className="text-red-500">Đã có lỗi xảy ra: {error.message}</div>
+        );
     }
 
     return (
@@ -90,13 +112,15 @@ const WePressLibrary = () => {
                 <div className="flex gap-2">
                     <button
                         onClick={() => setViewMode("grid")}
-                        className={`p-2 rounded ${viewMode === "grid" ? "bg-blue-500 text-white" : "bg-white"}`}
+                        className={`p-2 rounded ${viewMode === "grid" ? "bg-blue-500 text-white" : "bg-white"
+                            }`}
                     >
                         <HiViewGrid className="h-5 w-5" />
                     </button>
                     <button
                         onClick={() => setViewMode("list")}
-                        className={`p-2 rounded ${viewMode === "list" ? "bg-blue-500 text-white" : "bg-white"}`}
+                        className={`p-2 rounded ${viewMode === "list" ? "bg-blue-500 text-white" : "bg-white"
+                            }`}
                     >
                         <HiViewList className="h-5 w-5" />
                     </button>
@@ -108,7 +132,13 @@ const WePressLibrary = () => {
                     <Spinner size="xl" />
                 </div>
             ) : (
-                <div className={viewMode === "list" ? "space-y-2" : "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4"}>
+                <div
+                    className={
+                        viewMode === "list"
+                            ? "space-y-2"
+                            : "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4"
+                    }
+                >
                     {viewMode === "list" && (
                         <div className="flex items-center bg-white p-4 rounded-lg font-medium text-gray-700">
                             <div className="flex-1">Tên tài liệu</div>
@@ -119,10 +149,13 @@ const WePressLibrary = () => {
                             <div className="w-[24px]"></div>
                         </div>
                     )}
-                    {data?.data.map((doc) => (
+                    {data?.map((doc) => (
                         <div
                             key={doc.id}
-                            className={`bg-white ${viewMode === "list" ? "p-4 flex justify-between items-center" : "p-4 rounded-lg shadow hover:shadow-lg transition-shadow"}`}
+                            className={`bg-white ${viewMode === "list"
+                                ? "p-4 flex justify-between items-center"
+                                : "p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
+                                }`}
                         >
                             {viewMode === "list" ? (
                                 <>
@@ -130,7 +163,9 @@ const WePressLibrary = () => {
                                         <h3 className="text-sm font-medium">{doc.title}</h3>
                                     </div>
                                     <div className="flex-1">
-                                        <span className="text-sm text-gray-600">{doc.type.toUpperCase()}</span>
+                                        <span className="text-sm text-gray-600">
+                                            {doc.metadata.extension.toUpperCase()}
+                                        </span>
                                     </div>
                                     <div className="flex-1">
                                         <span className="text-sm text-gray-600">{doc.author}</span>
@@ -139,10 +174,15 @@ const WePressLibrary = () => {
                                         <span className="text-sm text-gray-600">{doc.version}</span>
                                     </div>
                                     <div className="flex-1">
-                                        <span className="text-sm text-gray-600">{doc.created_at.slice(0, 4)}</span>
+                                        <span className="text-sm text-gray-600">
+                                            {doc.created_at.slice(0, 4)}
+                                        </span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <button className="p-1 hover:bg-gray-100 rounded" onClick={() => handleViewDocument(doc)}>
+                                        <button
+                                            className="p-1 hover:bg-gray-100 rounded"
+                                            onClick={() => navigate(ENDPOINTS.USER.EDITDOCUMENT)}
+                                        >
                                             <HiEye className="h-4 w-4 text-gray-600" />
                                         </button>
                                         {/* <button
@@ -168,39 +208,53 @@ const WePressLibrary = () => {
                                 </>
                             ) : (
                                 <>
-                                    <div className="aspect-[3/4] mb-2 overflow-hidden rounded-md cursor-pointer" onClick={() => handleViewDocument(doc)}>
+                                    <div
+                                        className="aspect-[3/4] mb-2 overflow-hidden rounded-md cursor-pointer"
+                                        onClick={() => navigate(ENDPOINTS.USER.EDITDOCUMENT)}
+                                    >
                                         <img
-                                            src={doc.thumbnail}
-                                            alt={doc.title}
+                                            src={`https://picsum.photos/300/400?random=${Math.floor(Math.random() * 100) + 1}`}
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    <h3 className="text-sm font-medium truncate">{doc.title}</h3>
+                                    {/* <h3 className="text-sm font-medium truncate">{doc.title}</h3> */}
+                                    {/* <div className="mt-2 text-xs text-gray-500">
+                    {doc.metadata.name.replace(/\.[^/.]+$/, '')}
+                  </div> */}
                                     <div className="flex justify-between items-center text-xs text-gray-500">
-                                        <span>{doc.type.toUpperCase()}</span>
-                                        <span>{doc.size}</span>
+                                        <span>{doc.metadata.extension.toUpperCase()}</span>
+                                        <span>{(doc.metadata.size / 1024).toFixed(2) + " KB"}</span>
                                     </div>
-                                    <div className="mt-2 text-xs text-gray-500">{"Tác giả: " + doc.author}</div>
-                                    <div className="text-xs text-gray-500">{"Phiên bản: " + doc.version}</div>
-                                    <div className="text-xs text-gray-500">{"Năm xuất bản: " + doc.created_at.slice(0, 4)}</div>
+                                    {/* <div className="mt-2 text-xs text-gray-500">
+                    {"Tác giả: " + doc.author}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {"Phiên bản: " + doc.version}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {"Năm xuất bản: " + doc.created_at.slice(0, 4)}
+                </div> */}
                                 </>
                             )}
                         </div>
                     ))}
                 </div>
-            )}
+            )
+            }
 
-            {data && (
-                <div className="flex justify-center mt-6">
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={data.meta.total_pages}
-                        onPageChange={setCurrentPage}
-                        showIcons
-                    />
-                </div>
-            )}
-
+            {
+                data && (
+                    <div className="flex justify-center mt-6">
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={2}
+                            onPageChange={setCurrentPage}
+                            showIcons
+                        />
+                    </div>
+                )
+            }
+            {/* 
             <Modal
                 show={showModal}
                 onClose={() => setShowModal(false)}
@@ -228,9 +282,10 @@ const WePressLibrary = () => {
                         />
                     </div>
                 </Modal.Body>
-            </Modal>
-        </div>
+            </Modal> */}
+        </div >
     );
 };
 
-export default WePressLibrary;
+export default MyDocuments;
+

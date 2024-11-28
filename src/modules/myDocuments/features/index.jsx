@@ -15,15 +15,16 @@ import { useNavigate } from "react-router-dom";
 import { ENDPOINTS } from "../../../routes/endPoints";
 import request from "../../../utils/request";
 
-const fetchDocuments = async ({ page, per_page, sort, order }) => {
-  const { data } = await request.get(`/documents/download`, {
+const fetchDocuments = async ({ page, per_page }) => {//, sort, order }) => {
+  const { documents: data } = await request.get(`/documents/download`, {
     params: {
       page,
       per_page,
-      sort,
-      order,
+      // sort,
+      // order,
     },
   });
+
   return data;
 };
 
@@ -37,13 +38,13 @@ const MyDocuments = () => {
   // const [selectedDoc, setSelectedDoc] = useState(null);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["documents", currentPage, sortBy, sortOrder],
+    queryKey: ["documents", currentPage],//, sortBy, sortOrder],
     queryFn: () =>
       fetchDocuments({
         page: currentPage,
         per_page: 10,
-        sort: sortBy,
-        order: sortOrder,
+        // sort: sortBy,
+        // order: sortOrder,
       }),
   });
 
@@ -111,17 +112,15 @@ const MyDocuments = () => {
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode("grid")}
-            className={`p-2 rounded ${
-              viewMode === "grid" ? "bg-blue-500 text-white" : "bg-white"
-            }`}
+            className={`p-2 rounded ${viewMode === "grid" ? "bg-blue-500 text-white" : "bg-white"
+              }`}
           >
             <HiViewGrid className="h-5 w-5" />
           </button>
           <button
             onClick={() => setViewMode("list")}
-            className={`p-2 rounded ${
-              viewMode === "list" ? "bg-blue-500 text-white" : "bg-white"
-            }`}
+            className={`p-2 rounded ${viewMode === "list" ? "bg-blue-500 text-white" : "bg-white"
+              }`}
           >
             <HiViewList className="h-5 w-5" />
           </button>
@@ -150,14 +149,13 @@ const MyDocuments = () => {
               <div className="w-[24px]"></div>
             </div>
           )}
-          {data?.data.map((doc) => (
+          {data?.map((doc) => (
             <div
               key={doc.id}
-              className={`bg-white ${
-                viewMode === "list"
-                  ? "p-4 flex justify-between items-center"
-                  : "p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
-              }`}
+              className={`bg-white ${viewMode === "list"
+                ? "p-4 flex justify-between items-center"
+                : "p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
+                }`}
             >
               {viewMode === "list" ? (
                 <>
@@ -166,7 +164,7 @@ const MyDocuments = () => {
                   </div>
                   <div className="flex-1">
                     <span className="text-sm text-gray-600">
-                      {doc.type.toUpperCase()}
+                      {doc.metadata.extension.toUpperCase()}
                     </span>
                   </div>
                   <div className="flex-1">
@@ -215,17 +213,19 @@ const MyDocuments = () => {
                     onClick={() => navigate(ENDPOINTS.USER.EDITDOCUMENT)}
                   >
                     <img
-                      src={doc.thumbnail}
-                      alt={doc.title}
+                      src={`https://picsum.photos/300/400?random=${Math.floor(Math.random() * 100) + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-sm font-medium truncate">{doc.title}</h3>
+                  {/* <h3 className="text-sm font-medium truncate">{doc.title}</h3> */}
+                  {/* <div className="mt-2 text-xs text-gray-500">
+                    {doc.metadata.name.replace(/\.[^/.]+$/, '')}
+                  </div> */}
                   <div className="flex justify-between items-center text-xs text-gray-500">
-                    <span>{doc.type.toUpperCase()}</span>
-                    <span>{doc.size}</span>
+                    <span>{doc.metadata.extension.toUpperCase()}</span>
+                    <span>{(doc.metadata.size / 1024).toFixed(2) + " KB"}</span>
                   </div>
-                  <div className="mt-2 text-xs text-gray-500">
+                  {/* <div className="mt-2 text-xs text-gray-500">
                     {"Tác giả: " + doc.author}
                   </div>
                   <div className="text-xs text-gray-500">
@@ -233,24 +233,27 @@ const MyDocuments = () => {
                   </div>
                   <div className="text-xs text-gray-500">
                     {"Năm xuất bản: " + doc.created_at.slice(0, 4)}
-                  </div>
+                </div> */}
                 </>
               )}
             </div>
           ))}
         </div>
-      )}
+      )
+      }
 
-      {data && (
-        <div className="flex justify-center mt-6">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={data.meta.total_pages}
-            onPageChange={setCurrentPage}
-            showIcons
-          />
-        </div>
-      )}
+      {
+        data && (
+          <div className="flex justify-center mt-6">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={2}
+              onPageChange={setCurrentPage}
+              showIcons
+            />
+          </div>
+        )
+      }
       {/* 
             <Modal
                 show={showModal}
@@ -280,8 +283,9 @@ const MyDocuments = () => {
                     </div>
                 </Modal.Body>
             </Modal> */}
-    </div>
+    </div >
   );
 };
 
 export default MyDocuments;
+
