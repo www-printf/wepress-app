@@ -16,6 +16,7 @@ import { ENDPOINTS } from "./endPoints";
 import LandingLayout from "../layouts/LandingLayout";
 import HomeLayout from "../layouts/HomeLayout";
 import SidebarLayout from "../layouts/SidebarLayout";
+import AdminLayout from "../layouts/AdminLayout";
 
 const WEB_NAME = "WePress App";
 
@@ -193,13 +194,21 @@ const adminDashboard = {
   title: `Admin Dashboard | ${WEB_NAME}`,
 }
 
+const adminLandingPage = {
+  path: ENDPOINTS.ADMIN.LANDINGPAGE,
+  Layout: AdminLayout,
+  component: lazy(() => delayRoute()(import("../modules/adminLanding/features"))),
+  title: WEB_NAME,
+};
+
+
 export const privateRouteData = [
   homePage,
   printDocumentPage,
   editDocumentPage,
-  wepressLibraryPage, // Cần sửa
-  sharedWithMePage, // Cần sửa
-  myDocumentsPage, // Cần sửa
+  wepressLibraryPage,
+  sharedWithMePage,
+  myDocumentsPage,
   purchasePaper,
   purchasing,
   viewPrinterStatus,
@@ -209,6 +218,7 @@ export const privateRouteData = [
   printHistoryPage,
   printerInfo,
   adminDashboard,
+  adminLandingPage
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];
