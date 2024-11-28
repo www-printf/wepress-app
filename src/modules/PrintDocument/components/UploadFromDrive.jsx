@@ -4,7 +4,7 @@ import icon_drive from '../../../assets/icons/icon_drive.png';
 // import SaveDriveFilesToLibrary from './SaveDriveFilesToLibrary';
 // import Signinbutton from './Signinbutton';
 import Drive from './Drive';
-const UploadFromDrive = ({ onConnect, onClose }) => {
+const UploadFromDrive = ({ handleFile, onClose }) => {
   return (
     <div className="flex flex-col items-center bg-white  rounded-lg shadow-2xl w-full max-w-[800px] h-full max-h-[500px] relative">
       {/* Nút Hoàn thành */}
@@ -34,7 +34,7 @@ const UploadFromDrive = ({ onConnect, onClose }) => {
         Vui lòng xác thực với Google Drive để chọn file
       </p>
 
-      <Drive></Drive>
+      <Drive handleFile={handleFile}></Drive>
     </div>
   );
 };

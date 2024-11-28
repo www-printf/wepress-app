@@ -51,6 +51,7 @@ const useFileHandler = () => {
     }
 
     try {
+      const namefile=file.name;
       setError(null);
 
       // Tạo params và thêm file
@@ -68,7 +69,7 @@ const useFileHandler = () => {
         const pdfBlob = await response.blob();
 
         // Tạo File object từ Blob
-        const pdfFile = new File([pdfBlob], 'converted.pdf', { type: 'application/pdf' });
+        const pdfFile = new File([pdfBlob], namefile, { type: 'application/pdf' });
 
         // Lưu file và URL vào state
         setUploadedFile(pdfFile);
@@ -150,23 +151,48 @@ const useFileHandler = () => {
   // Khởi tạo ConvertAPI khi hook được sử dụng
   initializeConvertApi();
 
-    const handleFileFromLink = (link) => {
+  const handleFileFromLink = (link) => {
     if (!link) {
       setError('Invalid link');
       return;
     }
-    setUploadedFile(link);
-    setFileContent(link); // Link sẽ được xử lý như URL
-    setError(null);
+  
+    fetch(link)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch file');
+        }
+        return response.blob();  // Xử lý file dưới dạng Blob
+      })
+      .then(blob => {
+          const fileType = blob.type;
+        if (fileType === 'application/pdf') {
+          // Nếu file là PDF, chỉ cần tạo URL cho file PDF
+          const url = URL.createObjectURL(blob);
+          setUploadedFile({
+            blob,
+          });
+        }
+       else {
+          const pdfFile = new File([pdfBlob], 'converted.pdf', { type: 'application/pdf' });
+
+          // Tạo URL cho file PDF
+          const pdfUrl = URL.createObjectURL(pdfFile);
+          setUploadedFile({
+            pdfFile,
+          });
+        
+      }}).catch(error => {
+        setError(error.message);  // Hiển thị lỗi nếu có
+      });
   };
 
-  const handleFileFromGoogleDrive = (googleDriveData) => {
+  const handleFileFromGoogleDrive = async (googleDriveData) => {
     if (!googleDriveData) {
       setError('Google Drive data is missing');
       return;
     }
     setUploadedFile(googleDriveData);
-    setFileContent(googleDriveData.previewLink || googleDriveData.downloadUrl);
     setError(null);
   };
 
