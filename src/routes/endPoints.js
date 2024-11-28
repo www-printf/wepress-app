@@ -28,6 +28,10 @@ export const ENDPOINTS = Object.freeze({
     PRINTING_STATUS: "/user/printing-status",
   },
 
+  ADMIN: {
+    DASHBOARD: "/admin/dashboard",
+  },
+
   ABOUT: "/about",
 
   ADMIN: {
