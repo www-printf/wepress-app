@@ -10,7 +10,7 @@ export const useAuth = () => {
     const { user, token } = useSelector((state) => state.auth);
 
     const loginMutation = useMutation({
-        mutationFn: async (inp) => (await request.post(endpoints.AUTH.LOGIN, inp)).data,
+        mutationFn: async (inp) => await request.post(endpoints.AUTH.LOGIN, inp),
         onSuccess: (data) => {
             dispatch(setCredentials(data));
             queryClient.invalidateQueries({ queryKey: ['user'] });
