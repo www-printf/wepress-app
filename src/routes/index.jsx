@@ -229,6 +229,7 @@ const AppRoutes = () => {
       <Routes>
         {renderRoutes(publicRoutesData)}
         {renderRoutes(privateRouteData, true)}
+        <Route path="*" element={<Navigate to={ENDPOINTS.INDEX} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -11,8 +11,8 @@ RUN yarn build
 
 
 FROM nginx:alpine
-COPY default.conf /etc/nginx/sites-available/default
 COPY --from=builder --chown=www-data:www-data /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
 RUN chmod 777 -R /usr/share/nginx/html/assets
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
