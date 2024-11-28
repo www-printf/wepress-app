@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Sidebar } from "flowbite-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ENDPOINTS } from "../routes/endPoints";
 import ico_printer from "../assets/icons/icon_printer_black.png";
+import { toast } from "react-toastify";
+import request from "../utils/request";
 
 // Import icons
 import { FaUser, FaPrint, FaChartBar, FaCog } from 'react-icons/fa';
@@ -10,6 +12,20 @@ import logo from "../assets/images/logo.png";
 
 const AdminLayout = ({ children }) => {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            const response = await request.get('/auth/me');
+
+            if (!["spso"].includes(response.role)) {
+                toast.warning("Bạn không có quyền truy cập vào trang này!");
+                navigate(ENDPOINTS.INDEX);
+            }
+        };
+
+        fetchUserProfile();
+    }, [navigate]);
 
     const customTheme = {
         root: {
