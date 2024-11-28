@@ -31,13 +31,6 @@ const DocumentPreview = ({ error }) => {
                     <p className="text-gray-500">[Preview of the Document]</p>
                 )}
             </div>
-            <div className="flex items-center justify-center bg-gray-800 text-white p-2 mt-4 rounded-md">
-                <span>Trang 1 / [N]</span>
-                <div className="flex ml-4 space-x-2">
-                    <button className="bg-gray-700 px-2 rounded">-</button>
-                    <button className="bg-gray-700 px-2 rounded">+</button>
-                </div>
-            </div>
         </div>
     );
 };

@@ -24,5 +24,6 @@ export const ENDPOINTS = Object.freeze({
     PRINT_HISTORY: "/user/print-history",
     SHARED_WITH_ME: "/shared-with-me",
     MY_DOCUMENTS: "/my-documents",
+    PRINTING_STATUS: "/user/printing-status",
   },
 });

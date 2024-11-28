@@ -5,7 +5,7 @@ const MoneyPanel = () => {
   const [isOpen, setIsOpen] = useState(true); // Trạng thái mở/đóng bảng chọn
   if (!isOpen) return null; // Ẩn bảng chọn nếu `isOpen` là false
   return (
-    <div className="absolute top-16 right-0 p-[10px] text-black w-[300px] h-[200px] "> 
+    <div className="absolute top-16 right-0 p-[10px] text-black w-[300px] h-[200px] z-50"> 
       <div className="bg-white rounded-lg p-4 shadow-lg space-y-4 border-2 border-black">
 
         <div className="flex items-center space-x-2">

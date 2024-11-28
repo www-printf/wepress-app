@@ -170,6 +170,12 @@ const purchaseHistory = {
   ),
   title: `Purchase History | ${WEB_NAME}`,
 };
+const printingStatus = {
+  path: ENDPOINTS.USER.PRINTING_STATUS,
+  Layout: DefaultLayout,
+  component: lazy(() => delayRoute()(import("../modules/printingStatus/features"))),
+  title: `Printing Status | ${WEB_NAME}`,
+};
 
 export const privateRouteData = [
   homePage,
@@ -185,6 +191,7 @@ export const privateRouteData = [
   purchaseHistory,
   infoPage,
   printHistoryPage,
+  printingStatus,
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage];
