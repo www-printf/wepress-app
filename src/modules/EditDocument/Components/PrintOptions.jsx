@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { clearUploadedFile } from '../../../store/slices/uploadSlice';
+import { ENDPOINTS } from '../../../routes/endPoints';
+import { Link } from 'react-router-dom';
 const PrintOptions = () => {
     const dispatch = useDispatch();
+    const credits = 100;
 
     const handleCancel = () => {
         dispatch(clearUploadedFile());
+    };
+    const [isPrint, setIsPrint] = useState(true);  // State theo dõi trạng thái in hay không
+
+    const handleCheckboxChange = (event) => {
+      setIsPrint(event.target.checked);  // Cập nhật trạng thái khi checkbox thay đổi
     };
 
     return (
         <div className="w-1/3 bg-gray-50 p-6 border-l border-gray-300">
             <div className="mb-4">
-                <h3 className="text-lg font-semibold text-gray-700">In</h3>
-                <p className="text-right text-gray-500">N tờ giấy</p>
+                <h3 className="text-lg font-semibold text-gray-700">In/ Lưu tài liệu</h3>
+                {/* <p className="text-right text-gray-500">N tờ giấy</p> */}
             </div>
             <div className="space-y-4">
                 <div>
@@ -72,10 +80,43 @@ const PrintOptions = () => {
                     </div>
                     <input type="text" placeholder="1, 2, 5-10" className="w-full border border-gray-300 rounded px-2 py-1 mt-1" />
                 </div>
-                <p className="text-gray-700 text-center mt-4">Bạn hiện có thể in XX trang giấy</p>
+                <p className="text-gray-700 text-center mt-4">Bạn hiện có thể in {credits/2} trang giấy</p>
+
+                <div className="flex justify-center mt-4">
+                    <label className="flex items-center">
+                    <input 
+                        type="checkbox" 
+                        checked={isPrint} 
+                        onChange={handleCheckboxChange} 
+                        className="mr-2"
+                    />
+                    <span>Bạn có muốn in không?</span>
+                    </label>
+                </div>
+
+                    
+
                 <div className="flex space-x-4 mt-4">
-                    <button className="w-1/2 bg-blue-500 text-white rounded py-2">In</button>
-                    <button onClick={handleCancel} className="w-1/2 bg-red-500 text-white rounded py-2">Hủy</button>
+                    {/* Nếu muốn in, giữ nguyên logic */}
+                    {isPrint ? (
+                    <Link 
+                        to={ENDPOINTS.USER.PRINTING_STATUS} 
+                        className="w-1/2 bg-blue-500 text-white rounded py-2 text-center"
+                    >
+                        In
+                    </Link>
+                    ) : (
+                    // Nếu không muốn in, chuyển về trang chủ
+                    <Link 
+                        to={ENDPOINTS.USER.HOME} 
+                        className="w-1/2 bg-blue-500 text-white rounded py-2 text-center"
+                    >
+                        In
+                    </Link>
+                    )}                    
+                    <Link to={ENDPOINTS.USER.PRINTDOCUMENT} onClick={handleCancel} className="w-1/2 bg-red-500 text-white rounded py-2 text-center">
+                    Hủy
+                    </Link>
                 </div>
             </div>
         </div>

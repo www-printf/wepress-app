@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import UploadFromLink from './UploadFromLink';
 import UploadFromDrive from './UploadFromDrive';
-
+import { ENDPOINTS } from '../../../routes/endPoints';
+import { Link } from 'react-router-dom';
 const Dropdown = ({
   isOpen,
   onSelect,
@@ -41,7 +42,15 @@ const Dropdown = ({
                 className="px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer transition-colors"
                 onClick={() => handleSelect(type)}
               >
-                {`From ${type.charAt(0).toUpperCase() + type.slice(1)}`}
+                {type === 'library' ? (
+            // Nếu là 'library', sử dụng Link để điều hướng
+                    <Link to={ENDPOINTS.USER.LIBRARY} className="text-inherit">
+                      {`From ${type.charAt(0).toUpperCase() + type.slice(1)}`}
+                    </Link>
+                  ) : (
+                    // Nếu không phải 'library', hiển thị thông thường
+                    `From ${type.charAt(0).toUpperCase() + type.slice(1)}`
+                  )}
               </li>
             ))}
           </ul>
@@ -76,7 +85,7 @@ const Dropdown = ({
       {showUploadFromDrive && (
         <div className="fixed inset-0 bg-gray-100 bg-opacity-90 flex items-center justify-center z-20">
           <UploadFromDrive
-            onConnect={handleGoogleDriveSubmit}
+            handleFile={handleGoogleDriveSubmit}
             onClose={() => setShowUploadFromDrive(false)}
           />
         </div>

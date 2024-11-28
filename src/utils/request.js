@@ -40,7 +40,7 @@ export function createRequestInterceptor() {
 
 function parseResultsHandler(response) {
   const { data } = response || {};
-  return data?.results || data;
+  return data?.data || data;
 }
 
 const isResponseError = ({ response }) => {
