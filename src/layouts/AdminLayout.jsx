@@ -87,9 +87,9 @@ const AdminLayout = ({ children }) => {
                                     </Sidebar.Item>
 
                                     <Sidebar.Item
-                                        href={ENDPOINTS.ADMIN.SETTINGS}
+                                        href={ENDPOINTS.ADMIN.CONFIGSYSTEM}
                                         icon={FaCog}
-                                        active={location.pathname === ENDPOINTS.ADMIN.SETTINGS}
+                                        active={location.pathname === ENDPOINTS.ADMIN.CONFIGSYSTEM}
                                         className="py-3"
                                     >
                                         <span>Tùy chỉnh hệ thống</span>
