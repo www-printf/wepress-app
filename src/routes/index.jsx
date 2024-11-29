@@ -200,7 +200,28 @@ const adminLandingPage = {
   component: lazy(() => delayRoute()(import("../modules/adminLanding/features"))),
   title: WEB_NAME,
 };
-
+const adminPrinter = {
+  path: ENDPOINTS.ADMIN.PRINTERS,
+  Layout: AdminLayout,
+  component: lazy(() => delayRoute()(import("../modules/adminPrinter/features"))),
+  title: WEB_NAME,
+};
+const adminPrinterInfo = {
+  path: ENDPOINTS.ADMIN.PRINTER_INFO,
+  Layout: AdminLayout,
+  component: lazy(() => 
+    delayRoute()(import("../modules/adminInfoPrinter/features"))
+  ),
+  title: `Printer Information | ${WEB_NAME}`,
+};
+const adminConfigSystem = {
+  path: ENDPOINTS.ADMIN.CONFIGSYSTEM,
+  Layout: AdminLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/adminConfigSystem/features"))
+  ),
+  title: `Config System | ${WEB_NAME}`,
+};
 
 export const privateRouteData = [
   homePage,
@@ -218,7 +239,10 @@ export const privateRouteData = [
   printHistoryPage,
   printerInfo,
   adminDashboard,
-  adminLandingPage
+  adminLandingPage,
+  adminPrinter,
+  adminPrinterInfo,
+  adminConfigSystem
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];

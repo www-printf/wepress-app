@@ -30,7 +30,11 @@ export const ENDPOINTS = Object.freeze({
 
   ADMIN: {
     DASHBOARD: "/admin/dashboard",
-    LANDINGPAGE: "/admin/landing-page"
+    LANDINGPAGE: "/admin/landing-page",
+    HOME: "/admin/home",
+    PRINTERS: "/admin/printers",
+    CONFIGSYSTEM: "/admin/config",
+    PRINTER_INFO: "/admin/printer-info/:printerID",
   },
 
   ABOUT: "/about",
