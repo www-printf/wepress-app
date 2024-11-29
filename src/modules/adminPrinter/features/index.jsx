@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchPrinters } from "../../../../mock/printer.mock.mjs";
 import PrinterCard from '../components/adminPrinter';
 import { Pagination, Select } from "flowbite-react";
-
+import { Link } from "react-router-dom";
+import DashboardHeader from "../components/DashboardHeader";
 const PrinterPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [roomFilter, setRoomFilter] = useState("Tất cả");
@@ -42,8 +43,9 @@ const PrinterPage = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen"> 
-      <div className="mx-[80px] my-[30px]">
+    <div className="p-6 bg-gray-100 min-h-screen w-auto min-w-[1200px]"> 
+      <DashboardHeader></DashboardHeader>
+      <div className=" mx-[30px] my-[30px]">
         <div className="flex justify-between items-center mb-2">
           <div className="flex gap-4">
             <div className="flex flex-col items-start ml-4">
@@ -72,6 +74,10 @@ const PrinterPage = () => {
                 <option value="Đang bảo trì">Đang bảo trì</option>
               </Select>
             </div>
+          </div>
+          <div className="mt-4 flex justify-center">
+            <Link to="/admin/add-printer" className="px-4 py-1 text-center border-2 bg-violet-300 hover:bg-violet-400 hover:border-blue-400 
+            rounded-lg font-medium">Thêm máy in</Link>
           </div>
         </div>
 

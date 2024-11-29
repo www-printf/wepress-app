@@ -25,16 +25,16 @@ const MoneyPanel = () => {
 
         <div className="flex items-center space-x-2">
             <img src={icon_info} alt="icon_info" className="h-8 w-8 fillter invert"/>
-            <span className="text-lg font-semibold">Bạn hiện có XX credit</span>
+            <span className="text-lg font-semibold">Bạn hiện có 50 credit</span>
             
         </div>
 
         <div className="ml-2">
-          <p>Với XX credit, bạn có thể in:</p>
+          <p>Với 50 credit, bạn có thể in:</p>
           <ul className="ml-2 list-disc pl-6 mt-1">
-            <li>XX trang giấy cỡ A5</li>
-            <li>1/2XX trang giấy cỡ A4</li>
-            <li>1/4XX trang giấy cỡ A3 </li>
+            <li>50 trang giấy cỡ A5</li>
+            <li>25 trang giấy cỡ A4</li>
+            <li>12 trang giấy cỡ A3 </li>
           </ul>
         </div>
 

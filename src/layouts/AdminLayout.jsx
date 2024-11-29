@@ -5,12 +5,14 @@ import { ENDPOINTS } from "../routes/endPoints";
 import ico_printer from "../assets/icons/icon_printer_black.png";
 import { toast } from "react-toastify";
 import request from "../utils/request";
-
+import { useAuth } from "../hooks/useAuth";
 // Import icons
 import { FaUser, FaPrint, FaChartBar, FaCog } from 'react-icons/fa';
 import logo from "../assets/images/logo.png";
+import {CiLogout} from "react-icons/ci";
 
 const AdminLayout = ({ children }) => {
+    const { logout } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -37,7 +39,7 @@ const AdminLayout = ({ children }) => {
         <>
             <div className="flex">
                 <div className="flex flex-1">
-                    <div className="h-screen w-64 border-r border-gray-200">
+                    <div className="h-screen w-64 border-r border-gray-200 sticky top-0">
                         <Sidebar theme={customTheme}>
                             <div className="mb-8 p-4">
                                 <div className="flex items-center">
@@ -89,11 +91,22 @@ const AdminLayout = ({ children }) => {
                                     <Sidebar.Item
                                         href={ENDPOINTS.ADMIN.CONFIGSYSTEM}
                                         icon={FaCog}
-                                        active={location.pathname === ENDPOINTS.ADMIN.CONFIGSYSTEM}
+                                        active={logout}
                                         className="py-3"
                                     >
                                         <span>Tùy chỉnh hệ thống</span>
                                     </Sidebar.Item>
+
+                                    <Sidebar.Item
+                                        href={''}
+                                        icon={CiLogout}
+                                        active={''}
+                                        className="py-3 absolute bottom-0"
+                                        onClick={logout}
+                                    >
+                                        <span>Đăng xuất</span>
+                                    </Sidebar.Item>
+
                                 </Sidebar.ItemGroup>
                             </Sidebar.Items>
                         </Sidebar>
