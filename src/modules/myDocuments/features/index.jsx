@@ -71,7 +71,6 @@ const MyDocuments = () => {
           ...doc.metadata,
           type: doc.metadata.mime_type,
         });
-        console.error(docFile);
         dispatch(setUploadedFile({ file: docFile }));
         navigate(ENDPOINTS.USER.EDITDOCUMENT);
       });
@@ -263,7 +262,7 @@ const MyDocuments = () => {
         <div className="flex justify-center mt-6">
           <Pagination
             currentPage={currentPage}
-            totalPages={2}
+            totalPages={currentPage + 1}
             onPageChange={setCurrentPage}
             showIcons
           />
