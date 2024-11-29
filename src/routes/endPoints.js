@@ -30,11 +30,9 @@ export const ENDPOINTS = Object.freeze({
 
   ADMIN: {
     DASHBOARD: "/admin/dashboard",
+    LANDINGPAGE: "/admin/landing-page"
   },
 
   ABOUT: "/about",
 
-  ADMIN: {
-    LANDINGPAGE: "/admin/landing-page"
-  }
 });
