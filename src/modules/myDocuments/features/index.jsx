@@ -176,7 +176,7 @@ const MyDocuments = () => {
               {viewMode === "list" ? (
                 <>
                   <div className="flex-1">
-                    <h3 className="text-sm font-medium">{doc.title}</h3>
+                    <h3 className="text-sm font-medium">{doc.metadata.name}</h3>
                   </div>
                   <div className="flex-1">
                     <span className="text-sm text-gray-600">
