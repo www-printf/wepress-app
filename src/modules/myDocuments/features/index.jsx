@@ -11,11 +11,14 @@ import {
   HiDotsVertical,
   HiX,
 } from "react-icons/hi";
+import { setUploadedFile } from "../../../store/slices/uploadSlice";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ENDPOINTS } from "../../../routes/endPoints";
 import request from "../../../utils/request";
 
-const fetchDocuments = async ({ page, per_page }) => {//, sort, order }) => {
+const fetchDocuments = async ({ page, per_page }) => {
+  //, sort, order }) => {
   const { documents: data } = await request.get(`/documents/download`, {
     params: {
       page,
@@ -33,12 +36,13 @@ const MyDocuments = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
+  const dispatch = useDispatch();
 
   // const [showModal, setShowModal] = useState(false);
   // const [selectedDoc, setSelectedDoc] = useState(null);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["documents", currentPage],//, sortBy, sortOrder],
+    queryKey: ["documents", currentPage], //, sortBy, sortOrder],
     queryFn: () =>
       fetchDocuments({
         page: currentPage,
@@ -59,10 +63,19 @@ const MyDocuments = () => {
     }
   };
 
-  // const handleViewDocument = (doc) => {
-  //     setSelectedDoc(doc);
-  //     setShowModal(true);
-  // };
+  const handleViewDocument = (doc) => {
+    fetch(doc.url)
+      .then((res) => res.blob())
+      .then((blob) => {
+        let docFile = new File([blob], doc.metadata.name, {
+          ...doc.metadata,
+          type: doc.metadata.mime_type,
+        });
+        console.error(docFile);
+        dispatch(setUploadedFile({ file: docFile }));
+        navigate(ENDPOINTS.USER.EDITDOCUMENT);
+      });
+  };
 
   // const handleDownload = (doc) => {
   //     const link = document.createElement('a');
@@ -112,15 +125,17 @@ const MyDocuments = () => {
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode("grid")}
-            className={`p-2 rounded ${viewMode === "grid" ? "bg-blue-500 text-white" : "bg-white"
-              }`}
+            className={`p-2 rounded ${
+              viewMode === "grid" ? "bg-blue-500 text-white" : "bg-white"
+            }`}
           >
             <HiViewGrid className="h-5 w-5" />
           </button>
           <button
             onClick={() => setViewMode("list")}
-            className={`p-2 rounded ${viewMode === "list" ? "bg-blue-500 text-white" : "bg-white"
-              }`}
+            className={`p-2 rounded ${
+              viewMode === "list" ? "bg-blue-500 text-white" : "bg-white"
+            }`}
           >
             <HiViewList className="h-5 w-5" />
           </button>
@@ -152,10 +167,11 @@ const MyDocuments = () => {
           {data?.map((doc) => (
             <div
               key={doc.id}
-              className={`bg-white ${viewMode === "list"
-                ? "p-4 flex justify-between items-center"
-                : "p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
-                }`}
+              className={`bg-white ${
+                viewMode === "list"
+                  ? "p-4 flex justify-between items-center"
+                  : "p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
+              }`}
             >
               {viewMode === "list" ? (
                 <>
@@ -181,7 +197,7 @@ const MyDocuments = () => {
                   <div className="flex items-center gap-2">
                     <button
                       className="p-1 hover:bg-gray-100 rounded"
-                      onClick={() => navigate(ENDPOINTS.USER.EDITDOCUMENT)}
+                      onClick={() => handleViewDocument(doc)}
                     >
                       <HiEye className="h-4 w-4 text-gray-600" />
                     </button>
@@ -210,10 +226,12 @@ const MyDocuments = () => {
                 <>
                   <div
                     className="aspect-[3/4] mb-2 overflow-hidden rounded-md cursor-pointer"
-                    onClick={() => navigate(ENDPOINTS.USER.EDITDOCUMENT)}
+                    onClick={() => handleViewDocument(doc)}
                   >
                     <img
-                      src={`https://picsum.photos/300/400?random=${Math.floor(Math.random() * 100) + 1}`}
+                      src={`https://picsum.photos/300/400?random=${
+                        Math.floor(Math.random() * 100) + 1
+                      }`}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -239,21 +257,18 @@ const MyDocuments = () => {
             </div>
           ))}
         </div>
-      )
-      }
+      )}
 
-      {
-        data && (
-          <div className="flex justify-center mt-6">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={2}
-              onPageChange={setCurrentPage}
-              showIcons
-            />
-          </div>
-        )
-      }
+      {data && (
+        <div className="flex justify-center mt-6">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={2}
+            onPageChange={setCurrentPage}
+            showIcons
+          />
+        </div>
+      )}
       {/* 
             <Modal
                 show={showModal}
@@ -283,9 +298,8 @@ const MyDocuments = () => {
                     </div>
                 </Modal.Body>
             </Modal> */}
-    </div >
+    </div>
   );
 };
 
 export default MyDocuments;
-
