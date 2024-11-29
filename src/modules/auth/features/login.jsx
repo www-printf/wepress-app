@@ -5,6 +5,7 @@ import logo from "../../../assets/icons/icon_printer_black.png";
 import { Link, useNavigate } from "react-router-dom";
 import { ENDPOINTS } from "../../../routes/endPoints";
 import LoginForm from "../components/form";
+import request from "../../../utils/request";
 
 const Login = () => {
   const { login, isLoggingIn, loginError, isAuthenticated } = useAuth();
@@ -17,10 +18,31 @@ const Login = () => {
     login({ email, password });
   };
 
+
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate(ENDPOINTS.USER.HOME); // Chuyển hướng đến trang chủ sau khi đăng nhập thành công
-    }
+    // Kiểm tra nếu người dùng đã xác thực trước khi thực hiện fetch và logic điều hướng
+    if (!isAuthenticated) return; // Nếu chưa đăng nhập, không làm gì cả
+
+    const fetchUserProfile = async () => {
+      const response = await request.get("/auth/me");
+      console.log(response.role);
+      let role = "user"; // Đặt giá trị mặc định cho role
+
+      // Kiểm tra nếu role của người dùng là "spso"
+      if (["spso"].includes(response.role)) {
+        role = "spso";
+      }
+
+      // Điều hướng sau khi xác định vai trò người dùng
+      if (role === "user") {
+        navigate(ENDPOINTS.USER.HOME); // Chuyển hướng đến trang chủ của người dùng
+      } else if (role === "spso") {
+        navigate(ENDPOINTS.ADMIN.DASHBOARD); // Chuyển hướng đến trang dashboard của admin
+      }
+    };
+
+    // Gọi hàm fetchUserProfile để lấy thông tin người dùng và điều hướng
+    fetchUserProfile();
   }, [isAuthenticated, navigate]);
 
   return (
