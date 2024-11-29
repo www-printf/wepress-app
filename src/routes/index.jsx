@@ -187,7 +187,7 @@ const printerInfo = {
 };
 const adminDashboard = {
   path: ENDPOINTS.ADMIN.DASHBOARD,
-  Layout: SidebarLayout,
+  Layout: AdminLayout,
   component: lazy(() =>
     delayRoute()(import("../modules/adminDashboard/features"))
   ),
