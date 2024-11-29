@@ -32,7 +32,7 @@ const fetchDocuments = async ({ page, per_page }) => {
 };
 
 const MyDocuments = () => {
-  const [viewMode, setViewMode] = useState("grid");
+  const [viewMode, setViewMode] = useState("list");
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
