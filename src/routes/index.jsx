@@ -107,6 +107,14 @@ const editDocumentPage = {
   ),
   title: WEB_NAME,
 };
+const printingStatus = {
+  path: ENDPOINTS.USER.PRINTING_STATUS,
+  Layout: DefaultLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/printingStatus/features"))
+  ),
+  title: `Printing Status | ${WEB_NAME}`,
+}
 const printHistoryPage = {
   path: ENDPOINTS.USER.PRINT_HISTORY,
   Layout: DefaultLayout,
@@ -242,7 +250,8 @@ export const privateRouteData = [
   adminLandingPage,
   adminPrinter,
   adminPrinterInfo,
-  adminConfigSystem
+  adminConfigSystem,
+  printingStatus,
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];

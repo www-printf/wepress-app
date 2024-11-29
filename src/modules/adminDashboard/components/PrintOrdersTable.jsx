@@ -1,67 +1,91 @@
 import React from 'react';
 
+const getRandomDate = () => {
+  const start = new Date(2023, 0, 1); // Ngày bắt đầu (1/1/2023)
+  const end = new Date(); // Ngày hiện tại
+  const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  return randomDate.toLocaleDateString("en-GB"); // Định dạng DD/MM/YYYY
+};
+
+// Hàm tạo mã đơn ngẫu nhiên
+const getRandomOrderId = () => {
+  return "ORD-" + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+};
+
+// Hàm tạo ID ngẫu nhiên cho người dùng và máy in
+const getRandomId = () => {
+  return Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+};
+
+// Hàm tạo trạng thái ngẫu nhiên
+const getRandomStatus = () => {
+  const statuses = ["printing", "interrupted", "completed"];
+  return statuses[Math.floor(Math.random() * statuses.length)];
+};
+
+// Tạo dữ liệu ngẫu nhiên cho đơn hàng
 const orders = [
   {
-    date: "DD/MM/YYYY",
-    orderId: "[Mã đơn in]",
-    userId: "[ID người dùng]",
-    printerId: "[ID máy in]",
+    date: getRandomDate(),
+    orderId: getRandomOrderId(),
+    userId: getRandomId(),
+    printerId: getRandomId(),
     fileName: "example_document.pdf",
-    pages: "18",
+    pages: Math.floor(Math.random() * 20) + 1, // Số trang ngẫu nhiên từ 1 đến 20
     paperSize: "A4",
-    status: "printing"
+    status: getRandomStatus()
   },
   {
-    date: "DD/MM/YYYY",
-    orderId: "[Mã đơn in]",
-    userId: "[ID người dùng]",
-    printerId: "[ID máy in]",
+    date: getRandomDate(),
+    orderId: getRandomOrderId(),
+    userId: getRandomId(),
+    printerId: getRandomId(),
     fileName: "example_document.pdf",
-    pages: "18",
+    pages: Math.floor(Math.random() * 20) + 1,
     paperSize: "A4",
-    status: "interrupted"
+    status: getRandomStatus()
   },
   {
-    date: "DD/MM/YYYY",
-    orderId: "[Mã đơn in]",
-    userId: "[ID người dùng]",
-    printerId: "[ID máy in]",
+    date: getRandomDate(),
+    orderId: getRandomOrderId(),
+    userId: getRandomId(),
+    printerId: getRandomId(),
     fileName: "example_document.pdf",
-    pages: "18",
+    pages: Math.floor(Math.random() * 20) + 1,
     paperSize: "A4",
-    status: "completed"
+    status: getRandomStatus()
   },
   {
-    date: "DD/MM/YYYY",
-    orderId: "[Mã đơn in]",
-    userId: "[ID người dùng]",
-    printerId: "[ID máy in]",
+    date: getRandomDate(),
+    orderId: getRandomOrderId(),
+    userId: getRandomId(),
+    printerId: getRandomId(),
     fileName: "example_document.pdf",
-    pages: "18",
+    pages: Math.floor(Math.random() * 20) + 1,
     paperSize: "A4",
-    status: "printing"
+    status: getRandomStatus()
   },
   {
-    date: "DD/MM/YYYY",
-    orderId: "[Mã đơn in]",
-    userId: "[ID người dùng]",
-    printerId: "[ID máy in]",
+    date: getRandomDate(),
+    orderId: getRandomOrderId(),
+    userId: getRandomId(),
+    printerId: getRandomId(),
     fileName: "example_document.pdf",
-    pages: "18",
+    pages: Math.floor(Math.random() * 20) + 1,
     paperSize: "A4",
-    status: "interrupted"
+    status: getRandomStatus()
   },
   {
-    date: "DD/MM/YYYY",
-    orderId: "[Mã đơn in]",
-    userId: "[ID người dùng]",
-    printerId: "[ID máy in]",
+    date: getRandomDate(),
+    orderId: getRandomOrderId(),
+    userId: getRandomId(),
+    printerId: getRandomId(),
     fileName: "example_document.pdf",
-    pages: "18",
+    pages: Math.floor(Math.random() * 20) + 1,
     paperSize: "A4",
-    status: "completed"
-  },
-  // Additional orders with different statuses
+    status: getRandomStatus()
+  }
+  // Thêm các đơn hàng khác nếu cần
 ];
 
 const StatusIcon = ({ status }) => {
