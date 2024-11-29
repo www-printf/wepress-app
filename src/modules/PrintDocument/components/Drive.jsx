@@ -5,7 +5,7 @@ import axios from 'axios';
 function Drive({ handleFile }) {
   const [openPicker, authResponse] = useDrivePicker();
   const [fileUrl, setFileUrl] = useState(''); // State để lưu URL của file đã chọn
-  const accessToken = "ya29.a0AeDClZDlZjEciplSl90u4ap2KGec-GplL2tHmmpnkoSlwr2Xt6P5_Dfmj1YZqF6tTvsAATlTKbbWd2DmrDQBCWc0E90uSKsu4e9cyv92sohtqbnQ277C1v54AvE7VkeHWLA14hsq9sshumMbjxRSeOOedKCCL4UELwpT1qWQaCgYKAQgSARESFQHGX2Mi5CpWjSfu8LxhGWkBqXCc9w0175"
+  const accessToken = "ya29.a0AeDClZBAGS0MUaZ4iYQ5i-10Yfov5MAzadSUCc8WELN7Qc4NJGzoQIWO4OOKMB80emhTrsBY6IyiABLb4_dH-txMe4KzfvMj3XKKQgV0nV3CB2OvsrEDXsFeoxDWJ13rbyzSTCgRG-dvHrbFI76e_redP5O5PLvjxq3qQ_RWaCgYKAZUSARESFQHGX2MiMnDz5q3E3g2yIjlXSWtFtQ0175"
   const handleOpenPicker = () => {
     openPicker({
       clientId: "72426656912-2hv4e253iokq4292gprvebb106rj5th0.apps.googleusercontent.com",

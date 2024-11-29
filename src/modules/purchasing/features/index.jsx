@@ -21,9 +21,9 @@ export default function PurchasePaper() {
           {/* Thông tin giao dịch */}
           
           <div className="flex justify-between mb-6 border-b-2 pb-4 text-gray-900">
-            <span>Số tiền: XX.XXXđ</span>
+            <span>Số tiền: 20.000đ</span>
             <span>Phí giao dịch: 0đ</span>
-            <span>Tổng tiền: ZZ.ZZZđ</span>
+            <span>Tổng tiền: 20.000đ</span>
           </div>
 
           
@@ -37,7 +37,7 @@ export default function PurchasePaper() {
                   <li>Ngân hàng TMCP Ngoại Thương Việt Nam - Chi nhánh Hùng Vương - TP.HCM</li>
                   <li>Số tài khoản: 0421000789789</li>
                   <li>Tên tài khoản: TRƯỜNG ĐẠI HỌC BÁCH KHOA</li>
-                  <li>Số tiền: ZZ.ZZZ VNĐ</li>
+                  <li>Số tiền: 20.000 VNĐ</li>
                   <li>Nội dung: 2211709_Gói 50 credits</li>
                 </ul>  
             </div>

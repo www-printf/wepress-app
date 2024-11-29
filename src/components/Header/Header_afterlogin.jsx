@@ -83,7 +83,7 @@ function HeaderAuthed() {
               alt="icon_money"
               className="h-8 w-8 filter invert"
             />
-            <span className="text-xl">XX</span>
+            <span className="text-xl">50</span>
           </button>
 
           <button onClick={toggleUserPanel}>
