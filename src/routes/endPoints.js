@@ -35,6 +35,9 @@ export const ENDPOINTS = Object.freeze({
     PRINTERS: "/admin/printers",
     CONFIGSYSTEM: "/admin/config",
     PRINTER_INFO: "/admin/printer-info/:printerID",
+    MONITOR_USER: "/admin/user-moniter",
+    USER_DETAIL: "/admin/user-detail/:userID",
+    REVENUE: "/admin/revenue",
   },
 
   ABOUT: "/about",

@@ -71,9 +71,9 @@ const AdminLayout = ({ children }) => {
                                     </Sidebar.Item>
 
                                     <Sidebar.Item
-                                        href={ENDPOINTS.ADMIN.USERS}
+                                        href={ENDPOINTS.ADMIN.MONITOR_USER}
                                         icon={FaUser}
-                                        active={location.pathname === ENDPOINTS.ADMIN.USERS}
+                                        active={location.pathname === ENDPOINTS.ADMIN.MONITOR_USER}
                                         className="py-3"
                                     >
                                         <span>Người dùng</span>
