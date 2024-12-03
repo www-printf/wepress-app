@@ -230,6 +230,30 @@ const adminConfigSystem = {
   ),
   title: `Config System | ${WEB_NAME}`,
 };
+const adminMonitorUser = {
+  path: ENDPOINTS.ADMIN.MONITOR_USER,
+  Layout: AdminLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/adminMonitorUser/features"))
+  ),
+  title: `Monitor User | ${WEB_NAME}`,
+};
+const admin_UserDetails = {
+  path: ENDPOINTS.ADMIN.USER_DETAIL,
+  Layout: AdminLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/admin_UserDetail/features"))
+  ),
+  title: `User Details | ${WEB_NAME}`,
+};
+const adminRevenue = {
+  path: ENDPOINTS.ADMIN.REVENUE,
+  Layout: AdminLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/adminRevenue/features"))
+  ),
+  title: `Admin Revenue | ${WEB_NAME}`,
+};
 
 export const privateRouteData = [
   homePage,
@@ -252,6 +276,9 @@ export const privateRouteData = [
   adminPrinterInfo,
   adminConfigSystem,
   printingStatus,
+  adminMonitorUser,
+  admin_UserDetails,
+  adminRevenue
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];
