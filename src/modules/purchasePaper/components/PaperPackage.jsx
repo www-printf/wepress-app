@@ -5,17 +5,17 @@ const PaperPackage = () => {
   // Dữ liệu của các gói giấy
   const packages = [
     {
-      title: "Gói 50 credits",
+      title: 50,
       price: "20.000",
       link: "/user/purchasing",
     },
     {
-      title: "Gói 100 credits",
+      title: 100,
       price: "38.000",
       link: "/user/purchasing",
     },
     {
-      title: "Gói 200 credits",
+      title: 200,
       price: "70.000",
       link: "/user/purchasing",
     },

@@ -43,7 +43,7 @@ const PrinterPage = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen w-auto min-w-[1200px]"> 
+    <div className="p-6 min-h-screen w-auto min-w-[1200px]"> 
       <DashboardHeader></DashboardHeader>
       <div className=" mx-[30px] my-[30px]">
         <div className="flex justify-between items-center mb-2">
