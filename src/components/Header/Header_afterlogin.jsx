@@ -25,7 +25,7 @@ function HeaderAuthed() {
   const options = [
     { to: "/about", label: "Giới thiệu", activeOptions: { exact: true } },
     { to: "/my-documents", label: "Tài liệu của tôi" },
-    { to: "/user/purchase-paper", label: "Mua giấy in" },
+    { to: "/user/purchase-paper", label: "Mua credit" },
     { to: "/user/view-printer-status", label: "Tình trạng máy in" },
   ];
 

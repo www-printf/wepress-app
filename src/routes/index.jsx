@@ -107,14 +107,7 @@ const editDocumentPage = {
   ),
   title: WEB_NAME,
 };
-const printingStatus = {
-  path: ENDPOINTS.USER.PRINTING_STATUS,
-  Layout: DefaultLayout,
-  component: lazy(() =>
-    delayRoute()(import("../modules/printingStatus/features"))
-  ),
-  title: `Printing Status | ${WEB_NAME}`,
-}
+
 const printHistoryPage = {
   path: ENDPOINTS.USER.PRINT_HISTORY,
   Layout: DefaultLayout,
@@ -254,6 +247,22 @@ const adminRevenue = {
   ),
   title: `Admin Revenue | ${WEB_NAME}`,
 };
+const adminAddPrinter = {
+  path: ENDPOINTS.ADMIN.ADD_PRINTER,
+  Layout: AdminLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/adminPrinterDetail/features"))
+  ),
+  title: `Add Printer | ${WEB_NAME}`,
+};
+const printingStatus = {
+  path: ENDPOINTS.USER.PRINTING_STATUS,
+  Layout: DefaultLayout,
+  component: lazy(() =>
+    delayRoute()(import("../modules/printingStatus/features"))
+  ),
+  title: `Printing Status | ${WEB_NAME}`,
+}
 
 export const privateRouteData = [
   homePage,
@@ -278,7 +287,9 @@ export const privateRouteData = [
   printingStatus,
   adminMonitorUser,
   admin_UserDetails,
-  adminRevenue
+  adminRevenue,
+  adminAddPrinter,
+  printingStatus
 ];
 
 export const publicRoutesData = [landingPage, loginPage, forgotPasswordPage, about];
