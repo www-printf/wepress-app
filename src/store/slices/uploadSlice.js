@@ -12,21 +12,31 @@ const uploadSlice = createSlice({
   reducers: {
     setUploadedFile: (state, action) => {
       const file = action.payload.file;
+      
+      // Lưu thông tin cơ bản của file
       state.file = {
+        id: file.id,
         name: file.name,
         size: file.size,
         type: file.type,
+        url: file.url,
+        metadata: file.metadata,
       };
-      // Tạo URL từ file để xem trước
-      state.content = URL.createObjectURL(file);
 
-      // Lưu file và content vào localStorage
+      // Không tạo URL mới nếu file đã có URL
+      if (!file.url && file instanceof Blob) {
+        state.content = URL.createObjectURL(file);
+      } else {
+        state.content = file.url;
+      }
+
+      // Lưu vào localStorage
       localStorage.setItem('uploaded_file', JSON.stringify(state.file));
       localStorage.setItem('uploaded_content', state.content);
     },
     clearUploadedFile: (state) => {
       // Giải phóng URL khi xóa tệp
-      if (state.content) {
+      if (state.content && !state.file?.url) {
         URL.revokeObjectURL(state.content);
       }
       state.file = null;
