@@ -1,42 +1,10 @@
 import * as React from "react";
 import HistoryTable from "./HistoryTable";
-
-const transactionData = [
-  {
-    date: "DD/MM/YYYY",
-    content: "Mua thêm giấy in",
-    amount: "+ 50 trang giấy",
-    type: "increase"
-  },
-  {
-    date: "DD/MM/YYYY", 
-    content: "In tài liệu [file name].pdf",
-    amount: "- 27 trang giấy",
-    type: "decrease"
-  },
-  {
-    date: "DD/MM/YYYY",
-    content: "In tài liệu [file name].pdf", 
-    amount: "- 18 trang giấy",
-    type: "decrease"
-  },
-  {
-    date: "DD/MM/YYYY",
-    content: "Mua thêm giấy in",
-    amount: "+ 20 trang giấy", 
-    type: "increase"
-  },
-  {
-    date: "DD/MM/YYYY",
-    content: "In tài liệu [file name].pdf",
-    amount: "- 14 trang giấy",
-    type: "decrease"
-  }
-];
+import {transactionData } from "../../../../mock/transactionHistory.mock.mjs";
 
 function TransactionHistory() {
   return (
-    <section className="flex flex-col items-center px-2.5 pt-2.5 pb-5 text-sm text-black bg-white rounded-xl border border-solid border-zinc-200 min-w-[240px] w-[625px] max-md:max-w-full">
+    <section className="flex flex-col items-center px-2.5 pt-2.5 pb-5 text-sm text-black bg-white rounded-t-xl border border-solid border-zinc-200 min-w-[240px] w-[625px] max-md:max-w-full">
       <h2 className="font-semibold tracking-tight">Lịch sử giao dịch</h2>
       <HistoryTable 
         headers={["Ngày", "Nội dung", ""]}

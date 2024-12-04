@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InfoCard } from "../components/InfoCard";
 import { ProfileTab } from "../components/ProfileTab";
 import { CoverImage } from "../components/CoverImage";
 import { ProfileAvatar } from "../components/ProfileAvatar";
 import { HistoryPage } from "../components/HistoryPage";
+import {userDatas} from "../../../../mock/user.mock.mjs";
+import { useParams } from "react-router-dom";
 const userInfo = () => {
     const [activeTab, setActiveTab] = useState("info");
   const [imageSrc, setImageSrc] = useState();
+  const { userID } = useParams(); // Lấy ID từ URL path (giả sử là ID người dùng)
+  
+    // Tìm người dùng trong userData dựa trên studentId
+  const user = userDatas.find((user) => String(user.studentId) === userID || user.studentId === userID);
   const contactInfo = {
     title: "Thông tin liên lạc",
     iconSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/2720eac2783f7399e5eaeed8eec9ab6110ec43094a97d7e50eefe77e678633aa?placeholderIfAbsent=true&apiKey=2e91b678645640cfb9bdb9d816fad104",
     items: [
-      { label: "Email sinh viên", value: "example@hcmut.edu.vn" },
-      { label: "Email liên lạc", value: "example@mail.com" },
-      { label: "Số điện thoại", value: "0123456789" }
+      { label: "Email sinh viên", value: user.studentEmail || "example@mail.com" },  // Lấy email sinh viên từ userData
+      { label: "Email liên lạc", value: user.contactEmail || "example@mail.com" },  // Nếu không có email liên lạc, dùng mặc định
+      { label: "Số điện thoại", value: user.phone || "0123456789" }
     ]
   };
 
@@ -21,10 +27,10 @@ const userInfo = () => {
     title: "Thông tin cá nhân",
     iconSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/29c9d84370cb2ef30d17b84692faf34ccb12c28af86845fcbc628f1ba254e0f4?placeholderIfAbsent=true&apiKey=2e91b678645640cfb9bdb9d816fad104",
     items: [
-      { label: "Mã số sinh viên", value: "XXXXXX" },
-      { label: "Ngày sinh", value: "DD/MM/YYYY" },
-      { label: "Giới tính", value: "Nam/Nữ" },
-      { label: "Khoa", value: "Khoa học và kỹ thuật máy tính" }
+      { label: "Mã số sinh viên", value: user.studentId },  // Lấy mã số sinh viên từ userData
+      { label: "Ngày sinh", value: user.birthDate },  // Lấy ngày sinh từ userData
+      { label: "Giới tính", value: user.gender },  // Lấy giới tính từ userData
+      { label: "Khoa", value: user.faculty },  // Lấy khoa từ userData
     ]
   };
 
@@ -32,10 +38,10 @@ const userInfo = () => {
     title: "Thông tin đào tạo",
     iconSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/29c9d84370cb2ef30d17b84692faf34ccb12c28af86845fcbc628f1ba254e0f4?placeholderIfAbsent=true&apiKey=2e91b678645640cfb9bdb9d816fad104",
     items: [
-      { label: "Khoa", value: "Khoa học và kỹ thuật máy tính" },
-      { label: "Mã lớp", value: "MT22KH04" },
-      { label: "Khóa đào tạo", value: "Khóa 22" },
-      { label: "Tình trạng sinh viên", value: "Đang học/Đã tốt nghiệp" }
+      { label: "Khoa", value: user.faculty },  // Lấy khoa từ userData
+      { label: "Lớp", value: user.class },  // Lấy lớp từ userData
+      { label: "Khóa đào tạo", value: user.academicYear },  // Lấy khóa đào tạo từ userData
+      { label: "Tình trạng sinh viên", value: user.status || "Đang học" }  // Lấy tình trạng sinh viên, mặc định là "Đang học"
     ]
   };
 
@@ -106,3 +112,7 @@ const userInfo = () => {
 };
 
 export default userInfo;
+
+
+
+
