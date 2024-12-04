@@ -9,7 +9,7 @@ import { useAuth } from "../hooks/useAuth";
 // Import icons
 import { FaUser, FaPrint, FaChartBar, FaCog } from 'react-icons/fa';
 import logo from "../assets/images/logo.png";
-import {CiLogout} from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
 
 const AdminLayout = ({ children }) => {
     const { logout } = useAuth();
@@ -91,7 +91,7 @@ const AdminLayout = ({ children }) => {
                                     <Sidebar.Item
                                         href={ENDPOINTS.ADMIN.CONFIGSYSTEM}
                                         icon={FaCog}
-                                        active={logout}
+                                        active={location.pathname === ENDPOINTS.ADMIN.CONFIGSYSTEM}
                                         className="py-3"
                                     >
                                         <span>Tùy chỉnh hệ thống</span>
