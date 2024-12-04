@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { UserTableHeader } from './UserTableHeader';
 import { UserTableRow } from './UserTableRow';
-import { userData } from './userData';
+import { userDatas } from '../../../../mock/user.mock.mjs';
 
 export function UserTable() {
   // Tạo state để lưu số lượng hàng hiển thị
@@ -19,7 +19,7 @@ export function UserTable() {
           <UserTableHeader />
           <div className="flex flex-col max-md:max-w-full">
             {/* Lọc và chỉ hiển thị tối đa visibleCount hàng */}
-            {userData.slice(0, visibleCount).map((user, index) => (
+            {userDatas.slice(0, visibleCount).map((user, index) => (
               <UserTableRow key={index} user={user} />
             ))}
           </div>

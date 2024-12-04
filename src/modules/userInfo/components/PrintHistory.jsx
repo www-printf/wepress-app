@@ -1,33 +1,6 @@
 import * as React from "react";
 import HistoryTable from "./HistoryTable";
-
-const printData = [
-  {
-    date: "DD/MM/YYYY",
-    document: "[file name].pdf",
-    status: "printing"
-  },
-  {
-    date: "DD/MM/YYYY",
-    document: "[file name].pdf",
-    status: "completed"
-  },
-  {
-    date: "DD/MM/YYYY",
-    document: "[file name].pdf",
-    status: "interrupted"
-  },
-  {
-    date: "DD/MM/YYYY",
-    document: "[file name].pdf",
-    status: "completed"
-  },
-  {
-    date: "DD/MM/YYYY",
-    document: "[file name].pdf",
-    status: "completed"
-  }
-];
+import {printData} from "../../../../mock/printHistory.mock.mjs";
 
 function PrintHistory() {
   const renderStatus = (status) => {
@@ -83,13 +56,13 @@ function PrintHistory() {
         data={printData}
         renderRow={(item) => (
           <>
-            <div className="gap-1.5 self-stretch p-2.5 my-auto text-sm text-black whitespace-nowrap w-[125px]">
+            <div className="gap-1.5 self-stretch p-2.5 my-auto text-sm text-black whitespace-nowrap w-[150px]">
               {item.date}
             </div>
-            <div className="gap-1.5 self-stretch p-2.5 my-auto text-sm text-black min-w-[240px] w-[300px]">
+            <div className="gap-1.5 self-stretch p-2.5 my-auto text-sm text-black min-w-[240px] w-[150px]">
               {item.document}
             </div>
-            <div className="flex gap-1.5 items-center self-stretch p-2.5 my-auto w-[150px]">
+            <div className="flex gap-1.5 items-center self-stretch p-2.5 my-auto w-[170px]">
               <div className="flex gap-2.5 justify-center items-center self-stretch px-2.5 my-auto">
                 {renderStatus(item.status)}
               </div>
