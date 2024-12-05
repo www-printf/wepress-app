@@ -3,7 +3,6 @@ export const generateMockPrinters = (count) => {
   const printers = [];
   const locations = ["Cơ sở Lý Thường Kiệt", "Cơ sở Dĩ An"];
   const statuses = ["Sẵn sàng để in", "Đang bảo trì", "Đang in"];
-  const rooms = ["Phòng 101", "Phòng 102", "Phòng 103"];
 
   const manufacturer = ["Canon", "HP","Brother", "Epson"];
   const modelsByManufacturer = {
@@ -12,23 +11,24 @@ export const generateMockPrinters = (count) => {
     "Brother": ["DCP-B7535DW", "DCP-T720DW", "HL-L2321D"],
     "Epson": ["EcoTank L3250", "L4160 Duplex", "L120"],
   };
-  const buildingsByLocation = {
-    "Cơ sở Lý Thường Kiệt": ["A1", "A2", "A3", "A4","B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4"],
-    "Cơ sở Dĩ An": ["H1", "H2", "H3", "H6"],
+  const roomsByLocation = {
+    "Cơ sở Lý Thường Kiệt": ["A1 - 101", "A1 - 102", "A2 - 101", "A2 - 102", "A3 - 101", "A3 - 102", "A4 - 101",
+      "B1 - 101", "B1 - 102", "B2 - 101", "B2 - 102","B3 - 101", "B3 - 102","B4 - 101", "B4 - 102","C1 - 101", "C1 - 102", "C2 - 101", "C2 - 102", "C3 - 101", "C3 - 102"],
+    "Cơ sở Dĩ An": ["H1 - 101", "H1 - 102", "H2 - 101", "H2 - 102", "H3 - 102","H3 - 101", "H6 - 101", "H6 - 102"],
   };
   
   for (let i = 1; i <= count; i++) {
     const locationName = locations[Math.floor(Math.random() * locations.length)];
-    const buildingOptions = buildingsByLocation[locationName]; // Lấy tòa nhà phù hợp với location
+    const rooms = roomsByLocation[locationName]; // Lấy phong in phù hợp với location
     const manufacturerName = manufacturer[Math.floor(Math.random() * manufacturer.length)];
     const modelOptions = modelsByManufacturer[manufacturerName]; // Lấy mẫu mã phù hợp với hãng sản xuất
     printers.push({
       id: i,
       printerName: `Máy in ${i}`,
-      printerID: `PRT-${i}`,
+      printerID: `PT${i.toString().padStart(4, "0")}`,
       locationName: locationName,
       roomNumber: rooms[i % rooms.length],
-      building: buildingOptions[Math.floor(Math.random() * buildingOptions.length)],
+      // roomNumber: rooms[Math.floor(Math.random() * rooms.length)],
       paperA5: Math.floor(Math.random() * 500),
       paperA4: Math.floor(Math.random() * 500),
       paperA3: Math.floor(Math.random() * 500),

@@ -26,19 +26,26 @@ const PrinterPage = () => {
     setPrinters(filteredData);  
     }, [currentPage, roomFilter, statusFilter, locationFilter, perPage]
   );
+  const roomNumber = {
+    "Tất cả": ["A1 - 101", "A1 - 102", "A2 - 101", "A2 - 102", "A3 - 101", "A3 - 102", "A4 - 101","B1 - 101", "B1 - 102", "B2 - 101", "B2 - 102","B3 - 101", "B3 - 102","B4 - 101", "B4 - 102","C1 - 101", "C1 - 102", "C2 - 101", "C2 - 102", "C3 - 101", "C3 - 102", "H1 - 101", "H1 - 102", "H2 - 101", "H2 - 102", "H3 - 102","H3 - 101", "H6 - 101", "H6 - 102"],
+    "Cơ sở Lý Thường Kiệt": ["A1 - 101", "A1 - 102", "A2 - 101", "A2 - 102", "A3 - 101", "A3 - 102", "A4 - 101",
+      "B1 - 101", "B1 - 102", "B2 - 101", "B2 - 102","B3 - 101", "B3 - 102","B4 - 101", "B4 - 102","C1 - 101", "C1 - 102", "C2 - 101", "C2 - 102", "C3 - 101", "C3 - 102"],
+    "Cơ sở Dĩ An": ["H1 - 101", "H1 - 102", "H2 - 101", "H2 - 102", "H3 - 102","H3 - 101", "H6 - 101", "H6 - 102"],
+  };
   const handleLocationChange = (e) => {
     setLocationFilter(e.target.value); //gọi hàm filter khi thay đổi cơ sở in
-    setCurrentPage(1);  // Reset về trang đầu tiên khi thay đổi bộ lọc
+    setRoomFilter("Tất cả");
+    // setCurrentPage(1);  // Reset về trang đầu tiên khi thay đổi bộ lọc
   };
 
   const handleRoomChange = (e) => {
     setRoomFilter(e.target.value); //gọi hàm filter khi thay đổi phòng in
-    setCurrentPage(1); 
+    // setCurrentPage(1); 
   };
 
   const handleStatusChange = (e) => {
     setStatusFilter(e.target.value); //gọi hàm filter khi thay đổi trạng thái máy in
-    setCurrentPage(1);
+    // setCurrentPage(1);
   };
 
   return (
@@ -58,9 +65,11 @@ const PrinterPage = () => {
               <label className="block mb-1 text-sm font-medium">Phòng in</label>
               <Select value={roomFilter} onChange={handleRoomChange}>
                 <option value="Tất cả">Tất cả</option>
-                <option value="Phòng 101">Phòng 101</option>
-                <option value="Phòng 102">Phòng 102</option>
-                <option value="Phòng 103">Phòng 103</option>
+                {roomNumber[locationFilter]?.map((room) => (
+                  <option key={room} value={room}>
+                    {room}
+                  </option>
+                ))}
               </Select>
             </div>
             <div className="flex flex-col items-start ">
