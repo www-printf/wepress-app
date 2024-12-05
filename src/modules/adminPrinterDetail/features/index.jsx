@@ -2,6 +2,7 @@ import * as React from "react";
 import InputField from "../components/InputField";
 import PaperSizeSelector from "../components/PaperSizeSelector";
 import PaperCountInput from "../components/PaperCountInput";
+import { Link } from "react-router-dom";
 
 const paperSizes = ["A3", "A4", "A5"];
 
@@ -52,7 +53,7 @@ export default function PrinterForm() {
               </div>
 
               <div className="flex flex-col mt-2.5 w-full">
-                <label htmlFor="facility" className="font-semibold tracking-tight text-black">
+                <label htmlFor="building" className="font-semibold tracking-tight text-black">
                   Cơ sở
                 </label>
                 <div className="flex gap-5 justify-between items-center px-2.5 py-1.5 mt-1.5 w-full whitespace-nowrap bg-white rounded-md border border-solid border-zinc-200 min-h-[30px] text-neutral-800">
@@ -92,7 +93,7 @@ export default function PrinterForm() {
               <div className="flex flex-wrap gap-5 items-start mt-2.5 text-sm font-semibold tracking-tight max-md:max-w-full">
                 <div className="flex flex-col min-w-[240px] w-[275px]">
                   <div className="flex flex-col justify-center self-start text-black">
-                    <div>Các cỡ giấy được hỗ trợ</div>
+                    <div className="mb-2.5">Các cỡ giấy được hỗ trợ</div>
                     <div className="flex gap-2.5 justify-center items-center whitespace-nowrap">
                       {paperSizes.map(size => (
                         <PaperSizeSelector key={size} size={size} />
@@ -116,9 +117,9 @@ export default function PrinterForm() {
           </div>
 
           <div className="flex gap-2.5 items-start mt-5 text-sm font-semibold tracking-tight text-center text-zinc-800">
-            <button type="button" className="flex gap-2.5 justify-center items-center p-2.5 bg-white rounded-lg border border-solid border-zinc-200 w-[105px]">
-              Quay lại
-            </button>
+            <Link to="/admin/printers" className="flex gap-2.5 justify-center items-center p-2.5 bg-white rounded-lg border border-solid border-zinc-200 w-[105px]">
+               Quay lại 
+            </Link>
             <button type="submit" className="flex gap-2.5 justify-center items-center p-2.5 bg-white rounded-lg border border-solid border-zinc-200">
               Thêm máy in
             </button>

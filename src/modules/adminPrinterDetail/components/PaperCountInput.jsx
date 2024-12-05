@@ -10,7 +10,7 @@ export default function PaperCountInput({ paperSize }) {
         <input
           id={`current${paperSize}`}
           type="number"
-          className="overflow-hidden gap-2.5 self-stretch px-2.5 w-full whitespace-nowrap bg-white rounded-md border border-solid border-zinc-200 min-h-[36px]"
+          className="overflow-hidden mt-1.5 gap-2.5 self-stretch px-2.5 w-full whitespace-nowrap bg-white rounded-md border border-solid border-zinc-200 min-h-[36px]"
           aria-label={`Số tờ ${paperSize} hiện có`}
         />
       </div>
@@ -21,7 +21,7 @@ export default function PaperCountInput({ paperSize }) {
         <input
           id={`capacity${paperSize}`}
           type="number"
-          className="overflow-hidden gap-2.5 self-stretch px-2.5 w-full whitespace-nowrap bg-white rounded-md border border-solid border-zinc-200 min-h-[36px]"
+          className="overflow-hidden mt-1.5 gap-2.5 self-stretch px-2.5 w-full whitespace-nowrap bg-white rounded-md border border-solid border-zinc-200 min-h-[36px]"
           aria-label={`Sức chứa tờ ${paperSize}`}
         />
       </div>

@@ -43,7 +43,7 @@ const PrinterPage = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen w-auto min-w-[1200px]"> 
+    <div className=" min-h-screen w-auto min-w-[1200px]"> 
       <DashboardHeader></DashboardHeader>
       <div className=" mx-[30px] my-[30px]">
         <div className="flex justify-between items-center mb-2">
@@ -76,7 +76,7 @@ const PrinterPage = () => {
             </div>
           </div>
           <div className="mt-4 flex justify-center">
-            <Link to="/admin/add-printer" className="px-4 py-1 text-center border-2 bg-violet-300 hover:bg-violet-400 hover:border-blue-400 
+            <Link to="/admin/add-printer" className="px-4 py-1 text-center border-2 text-white bg-green-500 hover:bg-green-600 hover:border-green-400 
             rounded-lg font-medium">Thêm máy in</Link>
           </div>
         </div>
