@@ -5,8 +5,10 @@ import icon_people from "../../assets/icons/icon_avarta.png";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate, Link } from "react-router-dom";
 import { ENDPOINTS } from "../../routes/endPoints";
+import { userData } from "../../../mock/user.mock.mjs";
 
 const UserPanel = () => {
+  const user = userData[0];
   const { logout, isAuthenticated } = useAuth(); // Sử dụng hàm logout và trạng thái xác thực từ useAuth
   const navigate = useNavigate();
 
@@ -42,7 +44,7 @@ const UserPanel = () => {
             alt="icon_people"
             className="h-10 w-10 filter invert"
           />
-          <Link to={ENDPOINTS.USER.INFO} onClick={() => setIsOpen(false)}>Tên người dùng</Link>
+          <Link to={ENDPOINTS.USER.INFO} onClick={() => setIsOpen(false)}>{user.fullName}</Link>
         </div>
         <div className=" border-t border-black w-full"></div>
 

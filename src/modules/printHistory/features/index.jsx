@@ -90,7 +90,7 @@ const PrintHistoryTable = () => {
   ];
 
   return (
-    <div className="flex overflow-hidden flex-col items-center px-8 py-10 max-md:px-5">
+    <div className="flex overflow-hidden flex-col items-center px-8 py-10 max-md:px-5 bg-gray-100">
       <div className="text-4xl font-bold tracking-tighter text-center text-black">
         Lịch sử in ấn
       </div>

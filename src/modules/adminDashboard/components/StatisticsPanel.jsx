@@ -7,9 +7,9 @@ const getRandomNumber = (min = 100, max = 1000) => {
 
 const stats = [
   { title: "Số lượng người dùng", value: getRandomNumber() }, // Số liệu ngẫu nhiên từ 100 đến 1000
-  { title: "Số lượng máy in", value: getRandomNumber() },
+  { title: "Số lượng máy in", value: 100 },
   { title: "Tổng số đơn in", value: getRandomNumber(500, 10000) }, // Số liệu ngẫu nhiên từ 500 đến 10000
-  { title: "Doanh thu tháng Y", value: getRandomNumber(1000000, 10000000) } // Số liệu ngẫu nhiên cho doanh thu
+  { title: "Doanh thu tháng 11/2024", value: getRandomNumber(1000000, 10000000) } // Số liệu ngẫu nhiên cho doanh thu
 ];
 
 export default function StatisticsPanel() {

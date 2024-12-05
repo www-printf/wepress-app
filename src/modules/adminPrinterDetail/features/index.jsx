@@ -3,10 +3,19 @@ import InputField from "../components/InputField";
 import PaperSizeSelector from "../components/PaperSizeSelector";
 import PaperCountInput from "../components/PaperCountInput";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Alert } from "flowbite-react";
 
 const paperSizes = ["A3", "A4", "A5"];
 
 export default function PrinterForm() {
+  const [successMessage, setSuccessMessage] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSuccessMessage(true);  // Giả lập thêm máy in thành công
+    setTimeout(() => setSuccessMessage(false), 3000);  // Ẩn thông báo sau 3 giây
+  };
+
   return (
     <div className="flex overflow-hidden flex-col">
       <header className="flex overflow-hidden flex-wrap gap-10 justify-between items-center px-5 py-2 w-full text-xl font-bold tracking-tight text-center text-black bg-white border-b border-zinc-200 min-h-[50px] max-md:max-w-full">
@@ -115,12 +124,21 @@ export default function PrinterForm() {
               </div>
             </div>
           </div>
-
+            {/* Thông báo thành công */}
+            {successMessage && (
+              <Alert
+                color="success"
+                className="mt-5"
+                onDismiss={() => setSuccessMessage(false)}
+              >
+                Máy in đã được thêm thành công!
+              </Alert>
+            )}
           <div className="flex gap-2.5 items-start mt-5 text-sm font-semibold tracking-tight text-center text-zinc-800">
             <Link to="/admin/printers" className="flex gap-2.5 justify-center items-center p-2.5 bg-white rounded-lg border border-solid border-zinc-200 w-[105px]">
                Quay lại 
             </Link>
-            <button type="submit" className="flex gap-2.5 justify-center items-center p-2.5 bg-white rounded-lg border border-solid border-zinc-200">
+            <button onSubmit={handleSubmit} type="submit" className="flex gap-2.5 justify-center items-center p-2.5 bg-white rounded-lg border border-solid border-zinc-200">
               Thêm máy in
             </button>
           </div>

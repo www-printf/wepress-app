@@ -1,7 +1,7 @@
 import * as React from "react";
 import HistoryTable from "./HistoryTable";
 import {transactionData } from "../../../../mock/transactionHistory.mock.mjs";
-
+import { Link } from "react-router-dom";
 function TransactionHistory() {
   return (
     <section className="flex flex-col items-center px-2.5 pt-2.5 pb-5 text-sm text-black bg-white rounded-t-xl border border-solid border-zinc-200 min-w-[240px] w-[625px] max-md:max-w-full">
@@ -30,7 +30,7 @@ function TransactionHistory() {
           alt=""
           className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square"
         />
-        <span>Xem chi tiết lịch sử giao dịch</span>
+        <Link to="/user/purchase-history">Xem chi tiết lịch sử giao dịch</Link>
       </button>
     </section>
   );

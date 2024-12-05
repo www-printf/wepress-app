@@ -53,7 +53,7 @@ export default function PrinterStatusPanel() {
         <div className="flex-1 shrink self-stretch my-auto text-xl font-bold tracking-tight text-black basis-5 max-md:max-w-full">
           Tình trạng máy in
         </div>
-        <Link to={ENDPOINTS.ADMIN.PRITERS} className="flex gap-2.5 justify-center items-center self-stretch p-2.5 my-auto text-sm font-semibold tracking-tight text-center bg-white rounded-lg border border-solid border-zinc-200 text-zinc-800">
+        <Link to={ENDPOINTS.ADMIN.PRINTERS} className="flex gap-2.5 justify-center items-center self-stretch p-2.5 my-auto text-sm font-semibold tracking-tight text-center bg-white rounded-lg border border-solid border-zinc-200 text-zinc-800">
           <div className="flex gap-2.5 justify-center items-center self-stretch my-auto">
             <div className="self-stretch my-auto">Chi tiết</div>
             <img

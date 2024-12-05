@@ -15,7 +15,7 @@ const userInfo = () => {
     items: [
       { label: "Email sinh viên", value: user.studentEmail },  // Lấy email sinh viên từ userData
       { label: "Email liên lạc", value: user.contactEmail || "example@mail.com" },  // Nếu không có email liên lạc, dùng mặc định
-      { label: "Số điện thoại", value: user.phone || "0123456789" }
+      { label: "Số điện thoại", value: user.phoneNumber || "0123456789" }
     ]
   };
 
