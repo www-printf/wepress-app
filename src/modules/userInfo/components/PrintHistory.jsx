@@ -1,7 +1,7 @@
 import * as React from "react";
 import HistoryTable from "./HistoryTable";
 import {printData} from "../../../../mock/printHistory.mock.mjs";
-
+import { Link } from "react-router-dom";
 function PrintHistory() {
   const renderStatus = (status) => {
     switch(status) {
@@ -77,7 +77,7 @@ function PrintHistory() {
           alt=""
           className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square"
         />
-        <span>Xem chi tiết lịch sử in ấn</span>
+        <Link to="/user/print-history">Xem chi tiết lịch sử in ấn</Link>
       </button>
     </section>
   );

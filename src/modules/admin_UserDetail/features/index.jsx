@@ -19,7 +19,7 @@ const userInfo = () => {
     items: [
       { label: "Email sinh viên", value: user.studentEmail || "example@mail.com" },  // Lấy email sinh viên từ userData
       { label: "Email liên lạc", value: user.contactEmail || "example@mail.com" },  // Nếu không có email liên lạc, dùng mặc định
-      { label: "Số điện thoại", value: user.phone || "0123456789" }
+      { label: "Số điện thoại", value: user.phoneNumber || "0123456789" }
     ]
   };
 
@@ -78,7 +78,7 @@ const userInfo = () => {
           />
           <div className="flex overflow-hidden z-0 gap-2.5 items-center px-8 pt-9 pb-2.5 w-full text-sm text-black bg-white max-md:px-5 max-md:max-w-full">
             <div className="flex flex-col justify-center items-start self-stretch my-auto">
-              <h1 className="font-semibold tracking-tight">[Họ và tên]</h1>
+              <h1 className="font-semibold tracking-tight">{user.fullName}</h1>
               <p className="mt-1.5">Sinh viên</p>
             </div>
           </div>

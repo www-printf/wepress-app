@@ -36,6 +36,7 @@ import React, { useEffect, useRef } from 'react';
 import ApexCharts from 'apexcharts';
 import { Card } from 'flowbite-react';
 import RevenueTable from './RevenueTable';
+import { Link } from 'react-router-dom';
 const RevenuePanel = () => {
   const chartRef = useRef(null); // To reference the chart container
   const currentYear = new Date().getFullYear();
@@ -71,7 +72,7 @@ const RevenuePanel = () => {
          <div className="self-stretch my-auto text-xl font-bold tracking-tight text-black">
            Doanh thu
          </div>
-         <button className="flex gap-2.5 justify-center items-center self-stretch p-2.5 my-auto text-sm font-semibold tracking-tight bg-white rounded-lg border border-solid border-zinc-200 text-zinc-800">
+         <Link to="/admin/revenue" className="flex gap-2.5 justify-center items-center self-stretch p-2.5 my-auto text-sm font-semibold tracking-tight bg-white rounded-lg border border-solid border-zinc-200 text-zinc-800">
            <div className="flex gap-2.5 justify-center items-center self-stretch my-auto">
             <div className="self-stretch my-auto">Chi tiết</div>
              <img
@@ -81,7 +82,7 @@ const RevenuePanel = () => {
                className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square"
              />
            </div>
-         </button>
+         </Link>
       </div>
       <div className="flex overflow-hidden gap-10 justify-between items-start px-2.5 mt-2.5 w-full max-md:max-w-full">
         <Card className="flex-1 max-md:max-w-full">
