@@ -433,7 +433,8 @@ function StatusInfo({ isMaintenanceMode, printerInfo, handleInputChange }) {
 function PrinterActions({ isMaintenanceMode, togglePrinterStatus }) {
   return (
     <div className="flex flex-row gap-3 mt-5">
-      <button onClick={togglePrinterStatus} className="px-4 py-2 bg-blue-500 text-white rounded-md">
+      <button onClick={togglePrinterStatus} className={`px-4 py-2 rounded-md text-white ${
+        isMaintenanceMode ? "bg-green-500 hover:bg-green-600" : "bg-red-500 hover:bg-red-600"}`}>
         {isMaintenanceMode ? "Kích hoạt máy in" : "Bảo trì máy in"}
       </button>
     </div>

@@ -29,7 +29,7 @@ const PrinterCard = ({ printerName, printerID, roomNumber, status }) => {
       </p> */}
       
       <div className="mt-4 flex justify-center">
-        <Link to={`/user/printer-info/${printerID}`} className="px-4 py-1 text-center border-2 bg-violet-300 hover:bg-violet-400 hover:border-blue-400 
+        <Link to={`/user/printer-info/${printerID}`} className="px-4 py-1 text-center border-2 text-white bg-blue-500 hover:bg-blue-600 hover:border-blue-400 
         rounded-lg font-medium">Chi tiết</Link>
       </div>
     </div>

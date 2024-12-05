@@ -13,15 +13,15 @@ export const generateMockPrinters = (count) => {
     "Epson": ["EcoTank L3250", "L4160 Duplex", "L120"],
   };
   const buildingsByLocation = {
-    "Cơ sở Lý Thường Kiệt": ["A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4"],
+    "Cơ sở Lý Thường Kiệt": ["A1", "A2", "A3", "A4","B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4"],
     "Cơ sở Dĩ An": ["H1", "H2", "H3", "H6"],
   };
-  const locationName = locations[Math.floor(Math.random() * locations.length)];
-  const buildingOptions = buildingsByLocation[locationName]; // Lấy tòa nhà phù hợp với location
-  const manufacturerName = manufacturer[Math.floor(Math.random() * manufacturer.length)];
-  const modelOptions = modelsByManufacturer[manufacturerName]; // Lấy mẫu mã phù hợp với hãng sản xuất
-
+  
   for (let i = 1; i <= count; i++) {
+    const locationName = locations[Math.floor(Math.random() * locations.length)];
+    const buildingOptions = buildingsByLocation[locationName]; // Lấy tòa nhà phù hợp với location
+    const manufacturerName = manufacturer[Math.floor(Math.random() * manufacturer.length)];
+    const modelOptions = modelsByManufacturer[manufacturerName]; // Lấy mẫu mã phù hợp với hãng sản xuất
     printers.push({
       id: i,
       printerName: `Máy in ${i}`,
@@ -47,7 +47,7 @@ export const generateMockPrinters = (count) => {
   return printers;
 };
 
-export const mockPrinters = generateMockPrinters(40);
+export const mockPrinters = generateMockPrinters(100);
 
 // Lọc các máy in
 export const fetchPrinters = ({ page, perPage, location, room, status }) => {
